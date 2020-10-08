@@ -21883,7 +21883,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PromotionCart"
+                                    "$ref": "#/components/schemas/SuccessData"
                                 },
                                 "example": {
                                     "title": "success",
@@ -21971,7 +21971,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PromotionCart"
+                                    "$ref": "#/components/schemas/SuccessData"
                                 },
                                 "example": {
                                     "title": "success",
@@ -31461,7 +31461,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PromotionCart"
+                                    "$ref": "#/components/schemas/SuccessData"
                                 },
                                 "example": {
                                     "title": "success",
@@ -31639,11 +31639,12 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PromotionCart"
+                                    "$ref": "#/components/schemas/SuccessData"
                                 },
                                 "example": {
                                     "title": "success",
-                                    "status": 200
+                                    "status": 200,
+                                    "data": true
                                 }
                             }
                         }
@@ -31716,7 +31717,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PromotionCart"
+                                    "$ref": "#/components/schemas/GetQuote"
                                 },
                                 "example":{
                                     "title": "success",
@@ -31839,7 +31840,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PromotionCart"
+                                    "$ref": "#/components/schemas/GetChildren"
                                 },
                                 "example":{
                                     "title": "success",
@@ -31908,7 +31909,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PromotionCart"
+                                    "$ref": "#/components/schemas/SuccessData"
                                 },
                                 "example":{
                                     "title": "success",
@@ -31921,8 +31922,7 @@
                 },
                 "deprecated": false
             }
-        },
-
+        }
     },
     "components": {
         "schemas": {
@@ -32850,6 +32850,156 @@
                                 "type": "string"
                             }
                         }
+                    }
+                },
+                "example": {
+                    "title": "success",
+                    "status": 200,
+                    "data": {}
+                }
+            },
+            "GetChildren": {
+                "title": "GetChildren",
+                "required": [
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "BusinessObjectId": {
+                                "type": "string"
+                            },
+                            "Id": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "title": "success",
+                    "status": 200,
+                    "data": {}
+                }  
+            },
+            "SuccessData": {
+                "title": "SuccessData",
+                "required": [
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "boolean"
+                    }
+                },
+                "example": {
+                    "title": "success",
+                    "status": 200,
+                    "data": {}
+                }
+            },
+            "GetQuote": {
+                "title": "GetQuote",
+                "required": [
+                    "Primary_Contact",
+                    "Account",
+                    "Proposal_Name",
+                    "Id",
+                    "Name",
+                    "OwnerId"
+                ],
+                "type": "object",
+                "properties": {
+                    "Primary_Contact": {
+                        "type": "string"
+                    },
+                    "Account": {
+                        "type": "string"
+                    },
+                    "Proposal_Name": {
+                        "type": "string"
+                    },
+                    "Approval_Stage": {
+                        "type": "string"
+                    },
+                    "Grand_Total": {
+                        "type": "number"
+                    },
+                    "Net_Amount": {
+                        "type": "number"
+                    },
+                    "PriceListId": {
+                        "type": "string"
+                    },
+                    "BillToAccountId": {
+                        "type": "string"
+                    },
+                    "ABOType": {
+                        "type": "string"
+                    },
+                    "Id": {
+                        "type": "string"
+                    },
+                    "Name": {
+                        "type": "string"
+                    },
+                    "OwnerId": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "title": "success",
+                    "status": 200,
+                    "data": {}
+                }
+            },
+            "GetOrder": {
+                "title": "GetOrder",
+                "required": [
+                    "SoldToAccountId",
+                    "ShipToAccountId",
+                    "PrimaryContactId",
+                    "Status",
+                    "Id",
+                    "Name",
+                    "OwnerId"
+                ],
+                "type": "object",
+                "properties": {
+                    "OrderAmount": {
+                        "type": "number"
+                    },
+                    "Status": {
+                        "type": "string"
+                    },
+                    "SoldToAccountId": {
+                        "type": "string"
+                    },
+                    "ShipToAccountId": {
+                        "type": "string"
+                    },
+                    "PrimaryContactId": {
+                        "type": "string"
+                    },
+                    "PriceListId": {
+                        "type": "string"
+                    },
+                    "OrderDate": {
+                        "type": "string"
+                    },
+                    "BillToAccountId": {
+                        "type": "string"
+                    },
+                    "Id": {
+                        "type": "string"
+                    },
+                    "Name": {
+                        "type": "string"
+                    },
+                    "OwnerId": {
+                        "type": "string"
                     }
                 },
                 "example": {
