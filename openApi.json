@@ -2881,7 +2881,7 @@
                     "Catalog"
                 ],
                 "summary": "GetMultipleProductRules",
-                "description": "Get constraint rules for multiple products at once by passing in an array of ids for the products you wish to have returned. Query parameters can be used to create more specific criteria for what is returned.\n\n## Request ##\n> Request body should be an array of objects containing a key with the name 'Id' and the string value for the id of the product to get constraint rules for.\n\n#### Example ####\n  [\n      {\n          \"Id\" : \"a1C4R0000062IC0UAM\"\n      },\n      {\n          \"Id\" : \"a1C4R0000062IC1UAM\"\n      },\n      {\n          \"Id\" : \"a1C4R0000062IC2UAM\"\n      }\n  ]",
+                "description": "Get constraint rules for multiple products at once by passing in an array of ids for the products you wish to have returned. Query parameters can be used to create more specific criteria for what is returned.",
                 "operationId": "GetMultipleProductRules",
                 "parameters": [
                     {
@@ -2909,6 +2909,31 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          },
+                          "properties": {
+                            "Id": {
+                              "type": "string"
+                            }
+                          },
+                          "example": [
+                            {
+                              "Id": "01t1T000005BXoUQAW"
+                            },
+                            {
+                              "Id": "01t1T000005BXnbQAG"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -6178,7 +6203,7 @@
                     "Cart Items"
                 ],
                 "summary": "AddOptiontoBundle",
-                "description": "The options post endpoint can be used to add options to an existing cart item.\n\n## Request# ##\n|***Type***|**Optional**|**Description**|\n|--|--|--|\n|OptionRequest or Array [OptionRequest]| No | Request body can be a single record or an array of records if multiple options are to be added. |\n\n#### OptionRequest ####\n|**Key**|**Type**|**Optional**|**Description**|\n|--|--|--|--|\n| ProductId | String | No | The Product Id of the Option you want to add to the bundle |\n| Quantity | Number | No | The quantity of the option you want to add |\n| SellingTerm | Number | Yes | The value for the selling term of the option to be added |\n| ProductAttributes | ProductAttributeValue | Yes | Product attributes for the option to be added |\n| LineItem | CartLineItem | Yes | Line item for the option to be added |\n\n> The body of the request should contain an object containing the primitive string id of the option you want added to the bundle along with the quantity to be added.\n\n## Response ##\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| Rules | Array<AppliedRuleActionInfo> | - | An array of Applied Rule Action Info records associated with the line items |\n| LineItems | Array<CartItem> | - | An array containing all cart items associated with the line number of the bundle product (before reprice) |",
+                "description": "The options post endpoint can be used to add options to an existing cart item.",
                 "operationId": "AddOptiontoBundle",
                 "parameters": [
                     {
@@ -6242,6 +6267,40 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "description": "Request body can be a single record or an array of records if multiple options are to be added.The body of the request should contain an object containing the primitive string id of the option you want added to the bundle along with the quantity to be added.",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "ProductId": {
+                              "type": "string"
+                            },
+                            "Quantity": {
+                                "type": "number"
+                            },
+                            "SellingTerm": {
+                                "type": "number"
+                            },
+                            "ProductAttributes": {
+                                "type": "object"
+                            },
+                            "LineItem": {
+                                "type": "object"
+                            }
+                          },
+                          "example": {
+                            "ProductId" : "01t4R00000J5R6i",
+                            "Quantity" : 1,
+                            "ProductAttributes" : {
+                                "AutoABOPicklist__c" : "Option3"
+                            }
+                        }
+                        }
+                      }
+                    }
+                  },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -7761,7 +7820,7 @@
                     "Cart Items"
                 ],
                 "summary": "AddProducttoCart",
-                "description": "The cart items post endpoint can be used to add new line items to an existing cart. This is the most common type of cart action.\nA successful post will return the rules and line items associated with the added product.\n\n> Multiple line items may be returned if the product added is associated with a bundle.\n\n> Pricing for the added product is calculated as an asynchronous process after the product is added and may not be immediatley \n> available on the line item. While pricing is being calculated, the 'IsPricePending' field on the cart will be 'true'. \n\n\n## Request ##\n\n|**Type**|**Optional**|**Description**|\n|--|--|--|\n| CartRequest or Array [CartRequest] | No | Request body can be a single record or an array of records if multiple products are to be added. |\n\n#### CartRequest ####\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| ProductId | String | - | The Id of the product you wish to add |\n| Quantity | Number | - | The quantity of the product you wish to add |\n| ProductAttributes | Apttus_Config2__ProductAttributeValue__c | - | A product attribute value instance for the product |\n\n",
+                "description": "The cart items post endpoint can be used to add new line items to an existing cart. This is the most common type of cart action.\nA successful post will return the rules and line items associated with the added product.\n\n> Multiple line items may be returned if the product added is associated with a bundle.\n\n> Pricing for the added product is calculated as an asynchronous process after the product is added and may not be immediatley \n> available on the line item. While pricing is being calculated, the 'IsPricePending' field on the cart will be 'true'.",
                 "operationId": "AddProducttoCart",
                 "parameters": [
                     {
@@ -7813,6 +7872,34 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "description":"Request body can be a single record or an array of records if multiple products are to be added.",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "ProductId": {
+                              "type": "string"
+                            },
+                            "Quantity": {
+                                "type": "number"
+                            },
+                            "ProductAttributes": {
+                                "type": "object"
+                            }
+                          },
+                          "example": {
+                            "ProductId" : "01t4R00000J5R6i",
+                            "Quantity" : 1,
+                            "ProductAttributes" : {
+                                "AutoABOPicklist__c" : "Option3"
+                            }
+                         }                        
+                        }
+                      }
+                    }
+                  },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -10382,7 +10469,7 @@
                     "Cart Items"
                 ],
                 "summary": "UpdateCartItem",
-                "description": "The cart items put endpoint can be used to update existing line items in a cart.\nA successful put will return the rules and line items associated with the updated product.\n\n## Request For Updating Single Cart Item ##\n|**Type**|**Optional**|**Description**|\n|--|--|--|\n| Apttus_Config2__LineItem__c | No | Line item object with the updated values for the specified cart item. |\n\n## Request For Updating Multiple Cart Items ##\n> Do not include cartItemId as request parameter.\n\n|**Type**|**Optional**|**Description**|\n|--|--|--|\n| Array[Apttus_Config2__LineItem__c] | No | Array of cart item objects to update on the server. (each cart item object must include an Id field) |\n\n> Multiple line items may be returned if the product updated is associated with a bundle.\n\n> Pricing for the updated product is calculated as an asynchronous process after the product is added and may not be immediatley \n> available on the line item. While pricing is being calculated, the 'IsPricePending' field on the cart will be 'true'.",
+                "description": "The cart items put endpoint can be used to update existing line items in a cart.\nA successful put will return the rules and line items associated with the updated product.",
                 "operationId": "UpdateCartItem",
                 "parameters": [
                     {
@@ -10434,6 +10521,61 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          },
+                          "properties": {
+                            "Quantity": {
+                              "type": "number"
+                            },
+                            "ProductAttributes": {
+                                "type": "object"
+                            }
+                          },
+                          "example": [
+                            {
+                             "LineItem": {
+                               "attributes": {
+                                 "type": "Apttus_Config2__LineItem__c"
+                               },
+                               "Id": "a13W0000003AQAHIA4",
+                               "Apttus_Config2__LineNumber__c": "1.0",
+                               "Apttus_Config2__PrimaryLineNumber__c": "1.0",
+                               "Apttus_Config2__PricingStatus__c": "Pending",
+                               "Apttus_Config2__ConfigurationId__c": "a1IW0000001S3hJMAS",
+                               "Apttus_Config2__Quantity__C": 2
+                             },
+                             "ProductAttributes": {
+                               "attributes": {}
+                             }
+                           },
+                           {
+                             "LineItem": {
+                               "attributes": {
+                                 "type": "Apttus_Config2__LineItem__c"
+                               },
+                               "Id": "a13W0000003AQAcIAO",
+                               "Apttus_Config2__LineNumber__c": "1.0",
+                               "Apttus_Config2__PrimaryLineNumber__c": "2.0",
+                               "Apttus_Config2__PricingStatus__c": "Pending",
+                               "Apttus_Config2__OptionId__c": "01t3I000000LwmBQAS",
+                               "Apttus_Config2__ConfigurationId__c": "a1IW0000001S3hJMAS",
+                                 "Apttus_Config2__Quantity__C": 2
+                             },
+                             "ProductAttributes": {
+                               "attributes": {}
+                             }
+                           }
+                         ]
+                        }
+                      }
+                    }
+                  },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -13462,7 +13604,7 @@
                     "Cart Items"
                 ],
                 "summary": "RemoveMultipleCartItems",
-                "description": "You can easily remove items from the Cart. The response will contain the delete status of each item deleted.\n\n## Request ##\nRequest body should be an array of objects containing a key with the name 'Id' and the string value for the id of the cart item to delete.\n\n#### Example ####\n  [\n    {\n      \"Id\" : \"a1C4R0000062IC0UAM\"\n    },\n    {\n      \"Id\" : \"a1C4R0000062IC1UAM\"\n    },\n    {\n      \"Id\" : \"a1C4R0000062IC2UAM\"\n    }\n  ]",
+                "description": "You can easily remove items from the Cart. The response will contain the delete status of each item deleted.",
                 "operationId": "RemoveMultipleCartItems",
                 "parameters": [
                     {
@@ -13514,6 +13656,31 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          },
+                          "properties": {
+                            "Id": {
+                              "type": "string"
+                            }
+                          },
+                          "example": [
+                            {
+                                "Id" : "a1I3I0000004CoPUAU"
+                            },
+                            {
+                                "Id" : "a1I3I0000004CoQUAU"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -21154,7 +21321,7 @@
                     "Carts"
                 ],
                 "summary": "UpdateCart",
-                "description": "Updates a cart on the server that matches the cartId path variable. The fields to be updated need to be passed in to the body of the request.\n\n## Request\n|**Type**|**Optional**|**Description**|\n|--|--|--|\n| Apttus_Config2__ProductConfiguration__c | No | Cart object with the updated data |\n\n> Request body must include the cart object with the updated fields to be applied to the specified cart on the server.",
+                "description": "Updates a cart on the server that matches the cartId path variable. The fields to be updated need to be passed in to the body of the request.",
                 "operationId": "UpdateCart",
                 "parameters": [
                     {
@@ -21206,6 +21373,24 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "description":"Request body must include the cart object with the updated fields to be applied to the specified cart on the server.",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "Name": {
+                              "type": "string"
+                            }
+                          },
+                          "example": {
+                            "Name" : "Renamed Cart"
+                          }
+                        }
+                      }
+                    }
+                  },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -21727,7 +21912,7 @@
                     "Carts"
                 ],
                 "summary": "CreateCart",
-                "description": "This API can be used to easily create a new cart. By default, the newly created cart will be the active cart for the current user.\n\n## Request\n|**Type**|**Optional**|**Description**|\n|--|--|--|\n| Apttus_Config2__ProductConfiguration__c | Yes | Optional cart object with preset values for the new cart. |\n\n> Any editable cart fields can be passed into the request body to be used on the cart.\n\n#### Example ####\n  {\n    \"Name\": \"Example cart name\"\n  }",
+                "description": "This API can be used to easily create a new cart. By default, the newly created cart will be the active cart for the current user.",
                 "operationId": "CreateCart",
                 "parameters": [
                     {
@@ -21755,6 +21940,24 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "description": "Any editable cart fields can be passed into the request body to be used on the cart.",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "Name": {
+                              "type": "string"
+                            }
+                          },
+                          "example": {
+                            "Name" : "New Cart"
+                          }
+                        }
+                      }
+                    }
+                  },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -21815,7 +22018,7 @@
                     "Carts"
                 ],
                 "summary": "ApplyPromotiontoCart",
-                "description": "The Apply Promotion API can be used to apply a coupon code to the specified cart. If the coupon code is applicable, the API will return 'true'.\n\n## Request\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| code | String | - | Value of the coupon code. |\n\n> The body for the request should be the primitive string value of the coupon code.\n\n#### Example ####\n\t{\n\t\t\"code\": \"MANU1\"\n\t}",
+                "description": "The Apply Promotion API can be used to apply a coupon code to the specified cart. If the coupon code is applicable, the API will return 'true'.",
                 "operationId": "ApplyPromotiontoCart",
                 "parameters": [
                     {
@@ -21876,6 +22079,24 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "description":"The body for the request should be the primitive string value of the coupon code.",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "string"
+                            }
+                          },
+                          "example": {
+                            "code" : "MANU1"
+                          }
+                        }
+                      }
+                    }
+                  },
                 "responses": {
                     "200": {
                         "description": "",
@@ -29531,7 +29752,7 @@
                     "Generic"
                 ],
                 "summary": "UpsertaRecord(s)",
-                "description": "Records can be updated by passing in the record type and id as parameters and the fields to be updated in the body of the request.\n\n## Request ##\n> Any editable field for the specified record can be passed into the body of the request.\n\n> Request body can be a single record or an array of records to be updated.\n\n#### Example ####\n  {\n    \"EffectiveDate\" : \"2020-02-02T04:54:32.577Z\"\n  }",
+                "description": "Records can be updated by passing in the record type and id as parameters and the fields to be updated in the body of the request.",
                 "operationId": "UpsertaRecord(s)",
                 "parameters": [
                     {
@@ -29583,6 +29804,37 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "description":"Any editable field for the specified record can be passed into the body of the request. Request body can be a single record or an array of records to be updated.",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          },
+                          "properties": {
+                            "EffectiveDateId": {
+                              "type": "string"
+                            },
+                            "Id": {
+                              "type": "string"
+                            }
+                          },
+                          "example": [
+                            {
+                                "EffectiveDate" : "2020-01-02T04:54:32.577Z",
+                                "Id" : "a1I3I0000004CoPUAU"
+                            },
+                            {
+                                "EffectiveDate" : "2020-01-02T04:54:32.577Z",
+                                "Id" : "a1I3I0000004CoQUAU"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -29692,7 +29944,7 @@
                     "Generic"
                 ],
                 "summary": "DeleteMultipleRecords",
-                "description": "Multiple records can be deleted at once by passing the body of the request an array of record ids.\n\n## Request ##\nRequest body should be an array of objects containing a key with the name 'Id' and the string value for the id of the record to delete.\n\n#### Example ####\n  [\n      {\n          \"Id\" : \"a1C4R0000062IC0UAM\"\n      },\n      {\n          \"Id\" : \"a1C4R0000062IC1UAM\"\n      },\n      {\n          \"Id\" : \"a1C4R0000062IC2UAM\"\n      }\n  ]",
+                "description": "Multiple records can be deleted at once by passing the body of the request an array of record ids.\n\n## Request ##\nRequest body should be an array of objects containing a key with the name 'Id' and the string value for the id of the record to delete.",
                 "operationId": "DeleteMultipleRecords",
                 "parameters": [
                     {
@@ -29720,6 +29972,31 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          },
+                          "properties": {
+                            "Id": {
+                              "type": "string"
+                            }
+                          },
+                          "example": [
+                            {
+                                "Id" : "a1I3I0000004CoPUAU"
+                            },
+                            {
+                                "Id" : "a1I3I0000004CoQUAU"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -30045,7 +30322,7 @@
                     "Checkout"
                 ],
                 "summary": "CreateOrder",
-                "description": "Creates an order object based on the cart that matches the cartId path variable.\n\n## Request\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| Order | Apttus_Config2__Order__c | - | Order information |\n| Contact | Contact | - | Contact information |",
+                "description": "Creates an order object based on the cart that matches the cartId path variable.",
                 "operationId": "CreateOrder",
                 "parameters": [
                     {
@@ -30085,6 +30362,37 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "Order": {
+                              "type": "object"
+                            },
+                            "Contact": {
+                                "type": "object"
+                            }
+                          },
+                          "example": {
+                            "Order" : {
+                                "Description" : "From API",
+                                "BillToAccountId": "0014R00002XlsOb",
+                                "ShipToAccountId": "0014R00002XlsOb"
+                            },
+                            "Contact" : {
+                                "FirstName" : "Sample",
+                                "LastName" : "Name",
+                                "Contact_Full_Name" : "Hello",
+                                "MailingStreet" : "124 My Street",
+                                "Email" : "samplename@gmail.com"	
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -31474,119 +31782,6 @@
                 "deprecated": false
             }
         },
-        "/{object}": {
-            "get": {
-                "tags": [
-                    "Order"
-                ],
-                "summary": "Get Order",
-                "description": "Fetch the order by passing the Order Id",
-                "operationId": "Get Order",
-                "parameters": [
-                    {
-                        "name": "condition[0]",
-                        "in": "query",
-                        "description": "Query the orderId",
-                        "required": false,
-                        "style": "simple",
-                        "explode": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "Id,Equal,a2n3I0000009FXgQAM"
-                        }
-                    },
-                    {
-                        "name": "object",
-                        "in": "path",
-                        "description": "Name of the object you want returned.",
-                        "required": true,
-                        "style": "simple",
-                        "explode": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "Apttus_Config2__Order__c"
-                        }
-                    },
-                    {
-                        "name": "x-storefront",
-                        "in": "header",
-                        "description": "The name of the storefront being used for the request.",
-                        "required": true,
-                        "style": "simple",
-                        "explode": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "<string>"
-                        }
-                    },
-                    {
-                        "name": "Content-Type",
-                        "in": "header",
-                        "description": "Content type of the request body.",
-                        "required": true,
-                        "style": "simple",
-                        "explode": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "application/json"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/PromotionCart"
-                                },
-                                "example":{
-                                    "title": "success",
-                                    "status": 200,
-                                    "data": [
-                                        {
-                                            "SourceChannel": "Direct",
-                                            "ReadyForWorkflow": false,
-                                            "OriginalOrderNumber": "O-00007769",
-                                            "OrderAmount": 100.00000,
-                                            "Source": "Account",
-                                            "IsTaskPending": false,
-                                            "ConfigureNG": "<a href=\"/apex/Apttus_Config2__OrderConfiguration?id=a2n3I0000009FXg&amp;flow=NGDefault\" target=\"_self\"><img src=\"/resource/Apttus_Config2__Button_Configure\" alt=\"Configure Products\" border=\"0\"/></a>",
-                                            "ConfigurationSyncDate": "2020-09-25T11:10:18.000Z",
-                                            "AutoActivateOrder": false,
-                                            "Type": "New",
-                                            "Status": "Generated",
-                                            "SoldToAccountId": "0011900000hnGsrAAE",
-                                            "ShipToAccountId": "0011900000hnGsrAAE",
-                                            "PrimaryContactId": "0031900000VI1TBAA1",
-                                            "PricingDate": "2020-09-25T00:00:00.000Z",
-                                            "PriceListId": "a171T000005il1XQAQ",
-                                            "OrderDate": "2020-09-25T00:00:00.000Z",
-                                            "Description": "test order",
-                                            "BillToAccountId": "0011900000hnGsrAAE",
-                                            "LastReferencedDate": "2020-09-25T11:10:43.000Z",
-                                            "LastViewedDate": "2020-09-25T11:10:43.000Z",
-                                            "LastActivityDate": "2020-09-25",
-                                            "SystemModstamp": "2020-09-25T11:10:42.000Z",
-                                            "LastModifiedById": "00519000002cNFCAA2",
-                                            "LastModifiedDate": "2020-09-25T11:10:42.000Z",
-                                            "CreatedById": "00519000002cNFCAA2",
-                                            "CreatedDate": "2020-09-25T11:10:15.000Z",
-                                            "CurrencyIsoCode": "USD",
-                                            "Name": "O-00007769",
-                                            "IsDeleted": false,
-                                            "OwnerId": "00519000002cNFCAA2",
-                                            "Id": "a2n3I0000009FXgQAM"
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                },
-                "deprecated": false
-            }
-        },
         "/quotes/{quoteId}/accept": {
             "post": {
                 "tags": [
@@ -31645,141 +31840,6 @@
                                     "title": "success",
                                     "status": 200,
                                     "data": true
-                                }
-                            }
-                        }
-                    }
-                },
-                "deprecated": false
-            }
-        },
-        "/{object}": {
-            "get": {
-                "tags": [
-                    "Quote"
-                ],
-                "summary": "Get Quote",
-                "description": "Fetch the quote by passing the Quote Id",
-                "operationId": "Get Quote",
-                "parameters": [
-                    {
-                        "name": "condition[0]",
-                        "in": "query",
-                        "description": "Query the quoteId",
-                        "required": false,
-                        "style": "simple",
-                        "explode": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "Id,Equal,a0Y3I000001CafqUAC"
-                        }
-                    },
-                    {
-                        "name": "object",
-                        "in": "path",
-                        "description": "Name of the object you want returned.",
-                        "required": true,
-                        "style": "simple",
-                        "explode": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "Apttus_Proposal__Proposal__c"
-                        }
-                    },
-                    {
-                        "name": "x-storefront",
-                        "in": "header",
-                        "description": "The name of the storefront being used for the request.",
-                        "required": true,
-                        "style": "simple",
-                        "explode": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "<string>"
-                        }
-                    },
-                    {
-                        "name": "Content-Type",
-                        "in": "header",
-                        "description": "Content type of the request body.",
-                        "required": true,
-                        "style": "simple",
-                        "explode": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "application/json"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/GetQuote"
-                                },
-                                "example":{
-                                    "title": "success",
-                                    "status": 200,
-                                    "data": [
-                                        {
-                                            "DisableCartVersioning": false,
-                                            "SourceChannel": "Direct",
-                                            "test": "2020-10-07",
-                                            "Configure_Product_New": "<a href=\"/apex/Apttus_QPConfig__ProposalConfiguration?id=a0Y3I000001Cafq&amp;flow=Default\" target=\"_self\"><img src=\"/resource/Apttus_QPConfig__Button_Configure\" alt=\"Configure Products\" border=\"0\"/></a>",
-                                            "SendProposal": "<a href=\"/apex/Apttus_Proposal__DocGen?id=a0Y3I000001Cafq&amp;context=proposal&amp;name=Q-00003420\" target=\"_self\"><img src=\"/resource/Apttus_Proposal__Button_SendProposal\" alt=\"Send Proposal\" border=\"0\"/></a>",
-                                            "Proposal_Category": "Quote",
-                                            "UseType": "Main",
-                                            "SyncAssetChangesToQuote": true,
-                                            "ShipToAccountId": "0011900000hnGsrAAE",
-                                            "IsTaskPending": false,
-                                            "IsSystemGenerated": false,
-                                            "IsAutoAccepted": false,
-                                            "ConfigureNG": "<a href=\"/apex/Apttus_QPConfig__ProposalConfiguration?id=a0Y3I000001Cafq&amp;flow=NGDefault\" target=\"_self\"><img src=\"/resource/Apttus_QPConfig__Button_Configure\" alt=\"Configure Products\" border=\"0\"/></a>",
-                                            "BillToAccountId": "0011900000hnGsrAAE",
-                                            "AutoCreateRevenue": false,
-                                            "AutoCreateBill": false,
-                                            "AutoActivateOrder": false,
-                                            "ABOType": "New",
-                                            "Inactive_Days2": "None",
-                                            "Config_NonConfig2": "Non-Config",
-                                            "Currency_Symbol": "$",
-                                            "HG_Configur_Contract_Product": "<a href=\"/apex/Apttus_QPAsset__ProposalConfiguration?id=a0Y3I000001Cafq&amp;cntrNbr_1=CDP-0089765&amp;cntrNbr_2=444\" target=\"_self\"><img src=\"/resource/Apttus_QPConfig__Button_Configure\" alt=\"Configure Products\" border=\"0\"/></a>",
-                                            "ConfigureWithAssets": "<a href=\"/apex/Apttus_QPAsset__ProposalConfiguration?id=a0Y3I000001Cafq\" target=\"_self\"><img src=\"/resource/Apttus_QPConfig__Button_Configure\" alt=\"Configure Products\" border=\"0\"/></a>",
-                                            "PriceListId": "a171T000005il1XQAQ",
-                                            "Configure": "<a href=\"/apex/Apttus_QPConfig__ProposalConfiguration?id=a0Y3I000001Cafq&amp;flow=Default\" target=\"_self\"><img src=\"/resource/Apttus_QPConfig__Button_Configure\" alt=\"Configure Products\" border=\"0\"/></a>",
-                                            "Amount": 0.00,
-                                            "Sales_Tax_Amount": 0.00,
-                                            "Request_Approval": "<a href=\"/servlet/servlet.Integration?lid=01N700000009u2c&amp;eid=a0Y3I000001Cafq\" target=\"_blank\"><img src=\"/servlet/servlet.ImageServer?oid=00D70000000JXTN&amp;id=01570000000e6nU\" alt=\"Submit\" border=\"0\"/></a>",
-                                            "ReadyToPresent": true,
-                                            "ReadyToGenerate": true,
-                                            "Proposal_Name": "ABC Corporation:Boppana",
-                                            "Primary": true,
-                                            "Primary_Contact": "0031900000VI1TBAA1",
-                                            "Preview": "<a href=\"/apex/Apttus_Proposal__ProposalGenerate?id=a0Y3I000001Cafq&amp;action=Preview\" target=\"_self\"><img src=\"/resource/Apttus_Proposal__Button_Preview\" alt=\"Preview\" border=\"0\"/></a>",
-                                            "Present": "<a href=\"/apex/Apttus_Proposal__ProposalPresent?id=a0Y3I000001Cafq\" target=\"_self\"><img src=\"/resource/Apttus_Proposal__Button_Present\" alt=\"Present\" border=\"0\"/></a>",
-                                            "Payment_Term": "Net 30 Days",
-                                            "Net_Amount": 0.00,
-                                            "Grand_Total": 0.00,
-                                            "Generate": "<a href=\"/apex/Apttus_Proposal__ProposalGenerate?id=a0Y3I000001Cafq\" target=\"_self\"><img src=\"/resource/Apttus_Proposal__Button_Generate\" alt=\"Generate\" border=\"0\"/></a>",
-                                            "Approval_Stage": "Draft",
-                                            "Account": "0011900000hnGsrAAE",
-                                            "LastReferencedDate": "2020-09-30T10:48:12.000Z",
-                                            "LastViewedDate": "2020-09-30T10:48:12.000Z",
-                                            "SystemModstamp": "2020-09-30T10:48:12.000Z",
-                                            "LastModifiedById": "00519000002cNFCAA2",
-                                            "LastModifiedDate": "2020-09-30T10:48:12.000Z",
-                                            "CreatedById": "00519000002cNFCAA2",
-                                            "CreatedDate": "2020-09-30T10:48:12.000Z",
-                                            "RecordTypeId": "01250000000QxSgAAK",
-                                            "CurrencyIsoCode": "USD",
-                                            "Name": "Q-00003420",
-                                            "IsDeleted": false,
-                                            "OwnerId": "00519000002cNFCAA2",
-                                            "Id": "a0Y3I000001CafqUAC"
-                                        }
-                                    ]
                                 }
                             }
                         }
@@ -31855,9 +31915,7 @@
                     }
                 },
                 "deprecated": false
-            }
-        },
-        "/carts/{cartId}/children": {
+            },
             "post": {
                 "tags": [
                     "Caas"
