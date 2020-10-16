@@ -13739,18 +13739,6 @@
                         }
                     },
                     {
-                        "name": "lookups",
-                        "in": "query",
-                        "description": "Query the field which has lookup datatype using field name for the cart.",
-                        "required": false,
-                        "style": "form",
-                        "explode": true,
-                        "schema": {
-                            "type": "string",
-                            "example": "Account"
-                        }
-                    },
-                    {
                         "name": "cartId",
                         "in": "path",
                         "description": "The reference to the cart or 'active' for the current active cart",
@@ -27485,6 +27473,127 @@
                         }
                     },
                     {
+                        "name": "page[limit]",
+                        "in": "query",
+                        "description": "Maximum number of records to return.",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "page[current]",
+                        "in": "query",
+                        "description": "Page of records to display",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "sort[field]",
+                        "in": "query",
+                        "description": "Field to sort by",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sort[direction]",
+                        "in": "query",
+                        "description": "ASC / DESC",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "condition[0]",
+                        "in": "query",
+                        "description": "Array of conditions",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lookups",
+                        "in": "query",
+                        "description": "CSV of lookup relationships to include in result",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "children",
+                        "in": "query",
+                        "description": "CSV of child data to include in result",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "groupBy",
+                        "in": "query",
+                        "description": "CSV of fields to group the results by",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "aggregate",
+                        "in": "query",
+                        "description": "True / False to perform the query as an aggregate ",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    {
+                        "name": "searchString",
+                        "in": "query",
+                        "description": "The search string to apply",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fieldList",
+                        "in": "query",
+                        "description": "List of fields to return",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
                         "name": "object",
                         "in": "path",
                         "description": "Name of the object you want returned.",
@@ -31723,13 +31832,13 @@
                     "Order"
                 ],
                 "summary": "Accept Order",
-                "description": "The accept order API can be used to confirm the order when the order is in either of the status draft/presented/generated. This Api will return boolean value on success",
+                "description": "The accept order API can be used to confirm the order when the order status is Draft, Presented, or Generated. This API returns boolean value on success.",
                 "operationId": "Accept Order",
                 "parameters": [
                     {
                         "name": "orderId",
                         "in": "path",
-                        "description": "The Order Id value is primitve string which needs to be accepted",
+                        "description": "The Order Id value is primitive string which needs to be accepted.",
                         "required": true,
                         "style": "simple",
                         "explode": false,
@@ -31788,13 +31897,13 @@
                     "Quote"
                 ],
                 "summary": "Accept Quote or Proposal",
-                "description": "The Accept Quote API can be used to accept the Quote.If quote gets accepted API will return 'true'.",
+                "description": "The accept quote API can be used to accept the Quote. If quote is accepted, API response returns 'true'.",
                 "operationId": "AcceptProposal",
                 "parameters": [
                     {
                         "name": "quoteId",
                         "in": "path",
-                        "description": "The Quote Id value is primitve string which needs to be accepted",
+                        "description": "The Quote Id value is primitive string which needs to be accepted.",
                         "required": true,
                         "style": "simple",
                         "explode": false,
