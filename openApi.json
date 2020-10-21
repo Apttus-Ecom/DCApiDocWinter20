@@ -7878,7 +7878,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "Also, It is possible to create Request body,with single record or an array of records if multiple products are to be added as shown below",
+                    "description": "Request body of Add product to cart\n#### EXAMPLE\n#### [\n {\n \"LineItem\": {\n \"attributes\": {\n \"type\": \"Apttus_Config2__LineItem__c\" \n}, \n \"Apttus_Config2__LineNumber__c\": \"1.0\", \n \"Apttus_Config2__PrimaryLineNumber__c\": \"1.0\", \n \"Apttus_Config2__ItemSequence__c\": 1, \n \"Apttus_Config2__PricingStatus__c\": \"Pending\", \n \"Apttus_Config2__Product__c\": \"01t1T000005BXpfQAG\", \n \"Apttus_Config2__ConfigurationId__c\": \"a1I3I000000e7GLUAY\", \n \"Apttus_Config2__Quantity__C\": 1, \n \"Apttus_Config2__SellingTerm__c\": null \n}, \n \"ProductAttributes\": {\n \"attributes\": {} \n} \n} ]\n####      Another approach of adding request body with single record or an array of records if multiple products is shown below",
                     "content": {
                         "application/json": {
                             "schema": {
