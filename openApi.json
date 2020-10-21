@@ -37,6 +37,9 @@
         },
         {
             "name": "Storefront"
+        },
+        {
+            "name": "Assets"
         }
     ],
     "paths": {
@@ -70,7 +73,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "01t19000005GM8fAAG"
                         }
                     },
                     {
@@ -82,7 +85,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -2893,7 +2896,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "Ecommerce"
                         }
                     },
                     {
@@ -2911,29 +2914,29 @@
                 ],
                 "requestBody": {
                     "content": {
-                      "application/json": {
-                        "schema": {
-                          "type": "array",
-                          "items": {
-                            "type": "object"
-                          },
-                          "properties": {
-                            "Id": {
-                              "type": "string"
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                },
+                                "properties": {
+                                    "Id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "Id": "01t1T000005BXoUQAW"
+                                    },
+                                    {
+                                        "Id": "01t1T000005BXnbQAG"
+                                    }
+                                ]
                             }
-                          },
-                          "example": [
-                            {
-                              "Id": "01t1T000005BXoUQAW"
-                            },
-                            {
-                              "Id": "01t1T000005BXnbQAG"
-                            }
-                          ]
                         }
-                      }
                     }
-                  },
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -3123,13 +3126,13 @@
                     {
                         "name": "productId",
                         "in": "path",
-                        "description": "The name of the storefront being used for the request.",
+                        "description": "The name of the id of the product to retrieve.",
                         "required": true,
                         "style": "simple",
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "01t19000005GM8fAAG"
                         }
                     },
                     {
@@ -3141,7 +3144,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -3350,7 +3353,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -6130,7 +6133,7 @@
                         "explode": true,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "Auto"
                         }
                     },
                     {
@@ -6142,7 +6145,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -6215,7 +6218,7 @@
                         "explode": true,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "skip"
                         }
                     },
                     {
@@ -6227,7 +6230,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -6239,7 +6242,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a133I000000ThrKQAS"
                         }
                     },
                     {
@@ -6251,7 +6254,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     },
                     {
@@ -6270,37 +6273,39 @@
                 "requestBody": {
                     "description": "Request body can be a single record or an array of records if multiple options are to be added.The body of the request should contain an object containing the primitive string id of the option you want added to the bundle along with the quantity to be added.",
                     "content": {
-                      "application/json": {
-                        "schema": {
-                          "type": "object",
-                          "properties": {
-                            "ProductId": {
-                              "type": "string"
-                            },
-                            "Quantity": {
-                                "type": "number"
-                            },
-                            "SellingTerm": {
-                                "type": "number"
-                            },
-                            "ProductAttributes": {
-                                "type": "object"
-                            },
-                            "LineItem": {
-                                "type": "object"
-                            }
-                          },
-                          "example": {
-                            "ProductId" : "01t4R00000J5R6i",
-                            "Quantity" : 1,
-                            "ProductAttributes" : {
-                                "AutoABOPicklist__c" : "Option3"
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "ProductId": {
+                                        "type": "string"
+                                    },
+                                    "Quantity": {
+                                        "type": "number"
+                                    },
+                                    "SellingTerm": {
+                                        "type": "number"
+                                    },
+                                    "ProductAttributes": {
+                                        "type": "object"
+                                    },
+                                    "LineItem": {
+                                        "type": "object"
+                                    }
+                                },
+                                "example": {
+                                    "ProductId": "01t4R00000J5R6i",
+                                    "Quantity": 1,
+                                    "SellingTerm": 1,
+                                    "ProductAttributes": {
+                                        "AutoABOPicklist__c": "Option3"
+                                    },
+                                    "LineItem": []
+                                }
                             }
                         }
-                        }
-                      }
                     }
-                  },
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -7832,7 +7837,7 @@
                         "explode": true,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "skip"
                         }
                     },
                     {
@@ -7844,7 +7849,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -7856,7 +7861,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     },
                     {
@@ -7873,33 +7878,38 @@
                     }
                 ],
                 "requestBody": {
-                    "description":"Request body can be a single record or an array of records if multiple products are to be added.",
+                    "description": "Also, It is possible to create Request body,with single record or an array of records if multiple products are to be added as shown below",
                     "content": {
-                      "application/json": {
-                        "schema": {
-                          "type": "object",
-                          "properties": {
-                            "ProductId": {
-                              "type": "string"
-                            },
-                            "Quantity": {
-                                "type": "number"
-                            },
-                            "ProductAttributes": {
-                                "type": "object"
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                },
+                                "properties": {
+                                    "ProductId": {
+                                        "type": "object"
+                                    },
+                                    "Quantity": {
+                                        "type": "number"
+                                    },
+                                    "ProductAttributes": {
+                                        "type": "object"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "ProductId": "01t4R00000J5R6i",
+                                        "Quantity": 1,
+                                        "ProductAttributes": {
+                                            "AutoABOPicklist__c": "Option3"
+                                        }
+                                    }
+                                ]
                             }
-                          },
-                          "example": {
-                            "ProductId" : "01t4R00000J5R6i",
-                            "Quantity" : 1,
-                            "ProductAttributes" : {
-                                "AutoABOPicklist__c" : "Option3"
-                            }
-                         }                        
                         }
-                      }
                     }
-                  },
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -8717,7 +8727,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -8729,7 +8739,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a133I000000ThrKQAS"
                         }
                     },
                     {
@@ -8741,7 +8751,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -10481,7 +10491,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -10493,7 +10503,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a133I000000ThrKQAS"
                         }
                     },
                     {
@@ -10505,7 +10515,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     },
                     {
@@ -10523,59 +10533,59 @@
                 ],
                 "requestBody": {
                     "content": {
-                      "application/json": {
-                        "schema": {
-                          "type": "array",
-                          "items": {
-                            "type": "object"
-                          },
-                          "properties": {
-                            "Quantity": {
-                              "type": "number"
-                            },
-                            "ProductAttributes": {
-                                "type": "object"
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                },
+                                "properties": {
+                                    "LineItem": {
+                                        "type": "object"
+                                    },
+                                    "ProductAttributes": {
+                                        "type": "object"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "LineItem": {
+                                            "attributes": {
+                                                "type": "Apttus_Config2__LineItem__c"
+                                            },
+                                            "Id": "a13W0000003AQAHIA4",
+                                            "Apttus_Config2__LineNumber__c": "1.0",
+                                            "Apttus_Config2__PrimaryLineNumber__c": "1.0",
+                                            "Apttus_Config2__PricingStatus__c": "Pending",
+                                            "Apttus_Config2__ConfigurationId__c": "a1IW0000001S3hJMAS",
+                                            "Apttus_Config2__Quantity__C": 2
+                                        },
+                                        "ProductAttributes": {
+                                            "attributes": {}
+                                        }
+                                    },
+                                    {
+                                        "LineItem": {
+                                            "attributes": {
+                                                "type": "Apttus_Config2__LineItem__c"
+                                            },
+                                            "Id": "a13W0000003AQAcIAO",
+                                            "Apttus_Config2__LineNumber__c": "1.0",
+                                            "Apttus_Config2__PrimaryLineNumber__c": "2.0",
+                                            "Apttus_Config2__PricingStatus__c": "Pending",
+                                            "Apttus_Config2__OptionId__c": "01t3I000000LwmBQAS",
+                                            "Apttus_Config2__ConfigurationId__c": "a1IW0000001S3hJMAS",
+                                            "Apttus_Config2__Quantity__C": 2
+                                        },
+                                        "ProductAttributes": {
+                                            "attributes": {}
+                                        }
+                                    }
+                                ]
                             }
-                          },
-                          "example": [
-                            {
-                             "LineItem": {
-                               "attributes": {
-                                 "type": "Apttus_Config2__LineItem__c"
-                               },
-                               "Id": "a13W0000003AQAHIA4",
-                               "Apttus_Config2__LineNumber__c": "1.0",
-                               "Apttus_Config2__PrimaryLineNumber__c": "1.0",
-                               "Apttus_Config2__PricingStatus__c": "Pending",
-                               "Apttus_Config2__ConfigurationId__c": "a1IW0000001S3hJMAS",
-                               "Apttus_Config2__Quantity__C": 2
-                             },
-                             "ProductAttributes": {
-                               "attributes": {}
-                             }
-                           },
-                           {
-                             "LineItem": {
-                               "attributes": {
-                                 "type": "Apttus_Config2__LineItem__c"
-                               },
-                               "Id": "a13W0000003AQAcIAO",
-                               "Apttus_Config2__LineNumber__c": "1.0",
-                               "Apttus_Config2__PrimaryLineNumber__c": "2.0",
-                               "Apttus_Config2__PricingStatus__c": "Pending",
-                               "Apttus_Config2__OptionId__c": "01t3I000000LwmBQAS",
-                               "Apttus_Config2__ConfigurationId__c": "a1IW0000001S3hJMAS",
-                                 "Apttus_Config2__Quantity__C": 2
-                             },
-                             "ProductAttributes": {
-                               "attributes": {}
-                             }
-                           }
-                         ]
                         }
-                      }
                     }
-                  },
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -12995,7 +13005,7 @@
                         "explode": true,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "skip"
                         }
                     },
                     {
@@ -13007,7 +13017,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -13019,7 +13029,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a133I000000ThrKQAS"
                         }
                     },
                     {
@@ -13031,7 +13041,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -13616,7 +13626,7 @@
                         "explode": true,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "skip"
                         }
                     },
                     {
@@ -13628,7 +13638,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -13640,7 +13650,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     },
                     {
@@ -13658,29 +13668,29 @@
                 ],
                 "requestBody": {
                     "content": {
-                      "application/json": {
-                        "schema": {
-                          "type": "array",
-                          "items": {
-                            "type": "object"
-                          },
-                          "properties": {
-                            "Id": {
-                              "type": "string"
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                },
+                                "properties": {
+                                    "Id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "Id": "a1I3I0000004CoPUAU"
+                                    },
+                                    {
+                                        "Id": "a1I3I0000004CoQUAU"
+                                    }
+                                ]
                             }
-                          },
-                          "example": [
-                            {
-                                "Id" : "a1I3I0000004CoPUAU"
-                            },
-                            {
-                                "Id" : "a1I3I0000004CoQUAU"
-                            }
-                          ]
                         }
-                      }
                     }
-                  },
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -13747,7 +13757,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -13759,7 +13769,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -21321,7 +21331,7 @@
                         "explode": true,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "skip"
                         }
                     },
                     {
@@ -21333,7 +21343,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -21345,7 +21355,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     },
                     {
@@ -21362,23 +21372,23 @@
                     }
                 ],
                 "requestBody": {
-                    "description":"Request body must include the cart object with the updated fields to be applied to the specified cart on the server.",
+                    "description": "Request body must include the cart object with the updated fields to be applied to the specified cart on the server.",
                     "content": {
-                      "application/json": {
-                        "schema": {
-                          "type": "object",
-                          "properties": {
-                            "Name": {
-                              "type": "string"
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "Name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "Name": "Renamed Cart"
+                                }
                             }
-                          },
-                          "example": {
-                            "Name" : "Renamed Cart"
-                          }
                         }
-                      }
                     }
-                  },
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -21722,7 +21732,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -21734,7 +21744,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -21782,7 +21792,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -21794,7 +21804,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -21912,7 +21922,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     },
                     {
@@ -21924,28 +21934,28 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "application/json"
                         }
                     }
                 ],
                 "requestBody": {
                     "description": "Any editable cart fields can be passed into the request body to be used on the cart.",
                     "content": {
-                      "application/json": {
-                        "schema": {
-                          "type": "object",
-                          "properties": {
-                            "Name": {
-                              "type": "string"
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "Name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "Name": "New Cart"
+                                }
                             }
-                          },
-                          "example": {
-                            "Name" : "New Cart"
-                          }
                         }
-                      }
                     }
-                  },
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -22018,7 +22028,7 @@
                         "explode": true,
                         "schema": {
                             "type": "string",
-                            "example": "<number>"
+                            "example": "async"
                         }
                     },
                     {
@@ -22030,7 +22040,7 @@
                         "explode": true,
                         "schema": {
                             "type": "string",
-                            "example": "<number>"
+                            "example": "turbo"
                         }
                     },
                     {
@@ -22041,7 +22051,7 @@
                         "style": "simple",
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -22052,7 +22062,7 @@
                         "style": "simple",
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     },
                     {
@@ -22068,23 +22078,23 @@
                     }
                 ],
                 "requestBody": {
-                    "description":"The body for the request should be the primitive string value of the coupon code.",
+                    "description": "The body for the request should be the primitive string value of the coupon code.",
                     "content": {
-                      "application/json": {
-                        "schema": {
-                          "type": "object",
-                          "properties": {
-                            "code": {
-                              "type": "string"
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "code": "MANU1"
+                                }
                             }
-                          },
-                          "example": {
-                            "code" : "MANU1"
-                          }
                         }
-                      }
                     }
-                  },
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -22124,7 +22134,7 @@
                         "explode": true,
                         "schema": {
                             "type": "string",
-                            "example": "<number>"
+                            "example": "default"
                         }
                     },
                     {
@@ -22136,7 +22146,7 @@
                         "explode": true,
                         "schema": {
                             "type": "string",
-                            "example": "<number>"
+                            "example": "default"
                         }
                     },
                     {
@@ -22147,7 +22157,7 @@
                         "style": "simple",
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -22158,7 +22168,7 @@
                         "style": "simple",
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "MANU1"
                         }
                     },
                     {
@@ -22169,7 +22179,7 @@
                         "style": "simple",
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -22212,7 +22222,7 @@
                         "explode": true,
                         "schema": {
                             "type": "string",
-                            "example": "<number>"
+                            "example": "turbo"
                         }
                     },
                     {
@@ -22223,7 +22233,7 @@
                         "style": "simple",
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -22234,7 +22244,7 @@
                         "style": "simple",
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     },
                     {
@@ -22264,79 +22274,79 @@
                                     "data": {
                                         "SummaryGroups": [
                                             {
-                                                "OptionPrice": 0.0,
-                                                "DeltaPrice": 0.0,
-                                                "ExtendedPrice": 5400.0,
-                                                "OptionCost": 0.0,
-                                                "ItemSequence": 2.0,
-                                                "NetPrice": 5400.0,
-                                                "BaseExtendedCost": 0.0,
-                                                "PriceAdjustment": 0.0,
+                                                "OptionPrice": 0,
+                                                "DeltaPrice": 0,
+                                                "ExtendedPrice": 5400,
+                                                "OptionCost": 0,
+                                                "ItemSequence": 2,
+                                                "NetPrice": 5400,
+                                                "BaseExtendedCost": 0,
+                                                "PriceAdjustment": 0,
                                                 "AdjustmentAmount": null,
                                                 "ChargeType": "Standard Price",
-                                                "ExtendedCost": 0.0,
-                                                "BaseExtendedPrice": 6000.0,
+                                                "ExtendedCost": 0,
+                                                "BaseExtendedPrice": 6000,
                                                 "GroupType": "Category",
-                                                "ExtendedRollupPrice": 5400.0,
+                                                "ExtendedRollupPrice": 5400,
                                                 "AdjustmentType": null,
                                                 "ConfigurationId": "a1IW0000001S2uFMAS",
                                                 "Name": "Subtotal - Standard Price (One Time)",
-                                                "ExtendedListPrice": 5400.0,
-                                                "GroupAdjustmentPercent": 0.0,
+                                                "ExtendedListPrice": 5400,
+                                                "GroupAdjustmentPercent": 0,
                                                 "Frequency": "One Time",
-                                                "NetAdjustmentPercent": 0.0,
-                                                "LineNumber": 2.0,
-                                                "AdjustedPrice": 5400.0,
+                                                "NetAdjustmentPercent": 0,
+                                                "LineNumber": 2,
+                                                "AdjustedPrice": 5400,
                                                 "LineType": "Subtotal",
                                                 "Description": "Subtotal - Standard Price (One Time)"
                                             },
                                             {
-                                                "ExtendedCost": 0.0,
-                                                "OptionPrice": 0.0,
-                                                "BaseExtendedPrice": 6000.0,
+                                                "ExtendedCost": 0,
+                                                "OptionPrice": 0,
+                                                "BaseExtendedPrice": 6000,
                                                 "GroupType": "Category",
-                                                "DeltaPrice": 0.0,
-                                                "ExtendedRollupPrice": 5400.0,
-                                                "ExtendedPrice": 5400.0,
-                                                "OptionCost": 0.0,
-                                                "ItemSequence": 3.0,
+                                                "DeltaPrice": 0,
+                                                "ExtendedRollupPrice": 5400,
+                                                "ExtendedPrice": 5400,
+                                                "OptionCost": 0,
+                                                "ItemSequence": 3,
                                                 "AdjustmentType": null,
                                                 "ConfigurationId": "a1IW0000001S2uFMAS",
                                                 "Name": "Total (One Time)",
-                                                "ExtendedListPrice": 5400.0,
-                                                "GroupAdjustmentPercent": 0.0,
-                                                "NetPrice": 5400.0,
+                                                "ExtendedListPrice": 5400,
+                                                "GroupAdjustmentPercent": 0,
+                                                "NetPrice": 5400,
                                                 "Frequency": "One Time",
-                                                "NetAdjustmentPercent": 0.0,
-                                                "LineNumber": 3.0,
-                                                "BaseExtendedCost": 0.0,
-                                                "PriceAdjustment": 0.0,
+                                                "NetAdjustmentPercent": 0,
+                                                "LineNumber": 3,
+                                                "BaseExtendedCost": 0,
+                                                "PriceAdjustment": 0,
                                                 "AdjustmentAmount": null,
-                                                "AdjustedPrice": 5400.0,
+                                                "AdjustedPrice": 5400,
                                                 "LineType": "Total",
                                                 "Description": "Total (One Time)"
                                             },
                                             {
-                                                "ExtendedCost": 0.0,
-                                                "OptionPrice": 0.0,
-                                                "BaseExtendedPrice": 6000.0,
+                                                "ExtendedCost": 0,
+                                                "OptionPrice": 0,
+                                                "BaseExtendedPrice": 6000,
                                                 "GroupType": "Category",
-                                                "DeltaPrice": 0.0,
-                                                "ExtendedRollupPrice": 5400.0,
-                                                "ExtendedPrice": 5400.0,
-                                                "OptionCost": 0.0,
-                                                "ItemSequence": 4.0,
+                                                "DeltaPrice": 0,
+                                                "ExtendedRollupPrice": 5400,
+                                                "ExtendedPrice": 5400,
+                                                "OptionCost": 0,
+                                                "ItemSequence": 4,
                                                 "AdjustmentType": null,
                                                 "ConfigurationId": "a1IW0000001S2uFMAS",
                                                 "Name": "Grand Total",
-                                                "ExtendedListPrice": 5400.0,
-                                                "NetPrice": 5400.0,
-                                                "NetAdjustmentPercent": 0.0,
-                                                "LineNumber": 4.0,
-                                                "BaseExtendedCost": 0.0,
-                                                "PriceAdjustment": 0.0,
+                                                "ExtendedListPrice": 5400,
+                                                "NetPrice": 5400,
+                                                "NetAdjustmentPercent": 0,
+                                                "LineNumber": 4,
+                                                "BaseExtendedCost": 0,
+                                                "PriceAdjustment": 0,
                                                 "AdjustmentAmount": null,
-                                                "AdjustedPrice": 5400.0,
+                                                "AdjustedPrice": 5400,
                                                 "LineType": "Grand Total",
                                                 "Description": "Grand Total"
                                             }
@@ -22348,21 +22358,21 @@
                                                 "SellingFrequency": "One Time",
                                                 "BillToAccountId": "0011900000hnGsrAAE",
                                                 "AddedBy": "User",
-                                                "ExtendedPrice": 5400.0,
+                                                "ExtendedPrice": 5400,
                                                 "RelatedAdjustmentType": null,
                                                 "TaxCodeId": null,
                                                 "CouponCode": null,
-                                                "ItemSequence": 1.0,
+                                                "ItemSequence": 1,
                                                 "PriceUom": "Each",
                                                 "IsUsageTierModifiable": false,
                                                 "IsHidden": false,
-                                                "NetPrice": 5400.0,
+                                                "NetPrice": 5400,
                                                 "AllowProration": false,
                                                 "Customizable": false,
                                                 "PriceAdjustment": null,
-                                                "ListPrice": 2000.0,
+                                                "ListPrice": 2000,
                                                 "PriceType": "One Time",
-                                                "ProductVersion": 1.0,
+                                                "ProductVersion": 1,
                                                 "ChargeType": "Standard Price",
                                                 "MaxUsageQuantity": null,
                                                 "HasAttributes": false,
@@ -22380,9 +22390,9 @@
                                                 "IsSellingTermReadOnly": false,
                                                 "LastReferencedDate": "2020-10-07T09:03:11.000Z",
                                                 "IsOptionRollupLine": false,
-                                                "AdjustedPrice": 5400.0,
+                                                "AdjustedPrice": 5400,
                                                 "Guidance": null,
-                                                "Operating_Expense_Formula": 0.0,
+                                                "Operating_Expense_Formula": 0,
                                                 "OptionPrice": null,
                                                 "CreatedDate": "2020-10-07T08:55:54.000Z",
                                                 "PriceMethod": "Per Unit",
@@ -22395,22 +22405,22 @@
                                                 "RollupPriceToBundle": true,
                                                 "Product_Family": "Services",
                                                 "IsReadOnly": false,
-                                                "IncentiveAdjustmentAmount": -600.0,
+                                                "IncentiveAdjustmentAmount": -600,
                                                 "SellingUom": "Each",
-                                                "NetUnitPrice": 1800.0,
+                                                "NetUnitPrice": 1800,
                                                 "BillingRule": null,
                                                 "MaxPrice": null,
-                                                "ExtendedQuantity": 3.0,
+                                                "ExtendedQuantity": 3,
                                                 "RenewalAdjustmentType": null,
                                                 "CreatedById": "00519000002hx55AAA",
                                                 "StartDate": "2020-10-07",
-                                                "BasePrice": 2000.0,
+                                                "BasePrice": 2000,
                                                 "Name": "LI-0000173989",
                                                 "AllowManualAdjustment": true,
                                                 "TaxInclusive": false,
                                                 "IsOptional": false,
-                                                "NetAdjustmentPercent": 0.0,
-                                                "LineNumber": 1.0,
+                                                "NetAdjustmentPercent": 0,
+                                                "LineNumber": 1,
                                                 "PricingDate": null,
                                                 "Taxable": false,
                                                 "LineType": "Product/Service",
@@ -22421,26 +22431,26 @@
                                                 "BasePriceOverride": null,
                                                 "SystemModstamp": "2020-10-07T09:03:11.000Z",
                                                 "RenewalAdjustmentAmount": null,
-                                                "LineSequence": 1.0,
+                                                "LineSequence": 1,
                                                 "LineStatus": null,
                                                 "PricingStatus": "Complete",
                                                 "BasePriceMethod": "Per Unit",
                                                 "AllocateGroupAdjustment": true,
-                                                "BaseExtendedPrice": 6000.0,
+                                                "BaseExtendedPrice": 6000,
                                                 "HasTieredPrice": false,
                                                 "MinPrice": null,
                                                 "AllowRemoval": true,
-                                                "TotalQuantity": 3.0,
+                                                "TotalQuantity": 3,
                                                 "IsPrimaryLine": true,
-                                                "GroupAdjustmentPercent": 0.0,
+                                                "GroupAdjustmentPercent": 0,
                                                 "AllowableAction": "Unrestricted",
                                                 "IncentiveCode": "AUTO01",
                                                 "ConstraintCheckStatus": "NA",
                                                 "FlatOptionPrice": null,
-                                                "SellingTerm": 1.0,
+                                                "SellingTerm": 1,
                                                 "PriceListItemId": "a161900000K9cZLAAZ",
                                                 "Comments": "Added by Code",
-                                                "IncentiveBasePrice": 1800.0,
+                                                "IncentiveBasePrice": 1800,
                                                 "Id": "a13W0000003AP5qIAG",
                                                 "MinMaxPriceAppliesTo": null,
                                                 "OptionCost": null,
@@ -22464,7 +22474,7 @@
                                                     "IsTransient": true,
                                                     "PriceListId": "a171T000005il1XQAQ",
                                                     "LastModifiedById": "00519000002hx55AAA",
-                                                    "NumberOfItems": 0.0,
+                                                    "NumberOfItems": 0,
                                                     "Id": "a1IW0000001S2uFMAS",
                                                     "BillToAccountId": "0011900000hnGsrAAE",
                                                     "CreatedDate": "2020-10-07T08:25:57.000Z",
@@ -22475,7 +22485,7 @@
                                                     "SummaryGroupType": "Category",
                                                     "IsDeleted": false,
                                                     "IsValidationPending": false,
-                                                    "BaseRelationCount": 0.0,
+                                                    "BaseRelationCount": 0,
                                                     "AccountId": "0011900000hnGsrAAE",
                                                     "EffectiveDate": "2020-10-07T08:25:56.000Z",
                                                     "CartDataCache": "{\n  \"usePriceEscalators\" : false,\n  \"useFormulaPricing\" : false,\n  \"useBasicTotaling\" : false,\n  \"splitCartThreshold\" : null,\n  \"splitCartCriteriaFields\" : null,\n  \"priceInErrorLineNumbers\" : [ ],\n  \"priceCompletedLineNumbers\" : [ ],\n  \"priceCompletedChunkLineNumbers\" : [ ],\n  \"pendingDepItemKeys\" : [ ],\n  \"lastIndex\" : 0,\n  \"lastChunkItemSequence\" : null,\n  \"IsProductGroupEnabled\" : false,\n  \"IsProductFamilyEnabled\" : false,\n  \"isPrestoCallPending\" : null,\n  \"isPrePricingStepPending\" : null,\n  \"isPostPricingStepPending\" : null,\n  \"IsOptionPricePending\" : false,\n  \"IsEmpty\" : false,\n  \"IsCustomGroupEnabled\" : false,\n  \"idxCType\" : { },\n  \"DependentItemKeyMap\" : { },\n  \"currAdHocGrouByField\" : null,\n  \"cTypeIdx\" : { },\n  \"couponUsage\" : { },\n  \"couponCodes\" : [ ],\n  \"chunkBundleLineNumber\" : null\n}",
@@ -22496,13 +22506,13 @@
                                                 "BillingFrequency": null,
                                                 "ConfigStatus": "NA",
                                                 "SyncStatus": "Synchronized",
-                                                "Term": 1.0,
+                                                "Term": 1,
                                                 "Demo_Renewal_flag": "No",
-                                                "Quantity": 3.0,
+                                                "Quantity": 3,
                                                 "ConfigurationId": "a1IW0000001S2uFMAS",
                                                 "ShipToAccountId": null,
                                                 "Uom": "Each",
-                                                "IncentiveExtendedPrice": 5400.0,
+                                                "IncentiveExtendedPrice": 5400,
                                                 "AdjustmentLineItems": [
                                                     {
                                                         "IncentiveId": "a1yJ0000002DAWeIAO",
@@ -22512,20 +22522,20 @@
                                                         "AdjustmentType": "Discount Amount",
                                                         "IncentiveCode": "AUTO01",
                                                         "AdjustmentUom": null,
-                                                        "LineNumber": 1.0,
+                                                        "LineNumber": 1,
                                                         "Type": "Promotion",
-                                                        "AdjustmentAmount": -200.0,
+                                                        "AdjustmentAmount": -200,
                                                         "PriceRuleId": "a2mJ0000001JlDKIA0",
-                                                        "BenefitQuantity": 3.0,
+                                                        "BenefitQuantity": 3,
                                                         "LineType": "Auto",
-                                                        "IncentiveAdjustmentAmount": -600.0
+                                                        "IncentiveAdjustmentAmount": -600
                                                     }
                                                 ],
                                                 "Frequency": "One Time",
                                                 "PriceIncludedInBundle": false,
                                                 "HasOptions": false,
-                                                "PrimaryLineNumber": 1.0,
-                                                "OptionSequence": 0.0,
+                                                "PrimaryLineNumber": 1,
+                                                "OptionSequence": 0,
                                                 "PaymentTermId": null,
                                                 "LastModifiedDate": "2020-10-07T09:03:11.000Z",
                                                 "PriceGroup": null
@@ -22558,7 +22568,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "Apttus_Config2__Order__C"
                         }
                     },
                     {
@@ -22570,7 +22580,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -27335,7 +27345,7 @@
                     "Generic"
                 ],
                 "summary": "Query",
-                "description": "The query endpoint can be used to obtained complex result sets for the client application. When using the query endpoint, it is important to keep in mind the limitations of the underlying SOQL and SOSL platforms that power this API. In addition, performance can vary based on the complexity of the query request.\n\n## Request ##\n> Request body should be an object containing the key and value with the following fields as shown in example below.\n\n#### Example ####\n\n    {\n        \"expressionOperator\": \"AND\",\n        \"view\": \"detail\",\n        \"parentKeys\": [],\n        \"expand\": true,\n        \"waitForExpansion\": true,\n        \"cacheStrategy\": \"freshness\",\n        \"conditions\": [\n            {\n                \"field\": \"Active\",\n                \"filterOperator\": \"Equal\",\n                \"val\": true,\n                \"value\": true,\n                \"apiName\": \"Apttus_Config2__ProductAttributeRule__c\"\n            }\n        ],\n        \"filters\": [\n            {\n                \"conditions\": [\n                    {\n                        \"field\": \"ProductScope\",\n                        \"filterOperator\": \"Equal\",\n                        \"val\": \"All\",\n                        \"value\": \"All\",\n                        \"apiName\": \"Apttus_Config2__ProductAttributeRule__c\"\n                    },\n                    {\n                        \"field\": \"ProductScope\",\n                        \"filterOperator\": \"In\",\n                        \"val\": [\n                            \"01t4R00000J5R6aQAF\"\n                        ],\n                        \"value\": \"01t4R00000J5R6aQAF\",\n                        \"apiName\": \"Apttus_Config2__ProductAttributeRule__c\"\n                    }\n                ],\n                \"filters\": null,\n                \"expressionOperator\": \"OR\",\n                \"apiName\": \"Apttus_Config2__ProductAttributeRule__c\"\n            }\n        ],\n        \"page\": {\n            \"pageLimit\": 50,\n            \"pageNumber\": 1\n        },\n        \"joins\": [],\n        \"children\": [\n            {\n                \"field\": \"Apttus_Config2__ProductAttributeRuleActions__r\",\n                \"filters\": [],\n                \"children\": null,\n                \"lookups\": null\n            }\n        ],\n        \"aggregateFields\": []\n    }\n\n## Body Parameters\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| page | Pagination | - | Pagination Object representing the per page limit and desired page number |\n| sortOrder | Array (Sort) | - | Array of sort objects to sort the result set |\n| cacheStrategy |\"performance\", \"freshness\"| freshness | Desired cache strategy |\n| conditions | Array (Condition) | - | Array of conditions to apply to the query |\n| expressionOperator | \"OR\", \"AND\" | \"AND\" | The expression used to combine conditions and filters |\n| filters | Array (Filter) | - | Array of filters to apply to the query |\n| joins | Array (Join) | - | Array of join objects to apply to the query |\n| lookups | Array (Lookup) | - | Array of lookup fields to populate on the result set |\n| children | Array (Children) | - | Array of child records to populate on the result set |\n| groupBy | List (String) | - | Array of fields to group the result set by\n| aggregate | true / false | false | When set to true, result will return only aggregate data |\n| aggregateFields | Array (AggregateField) | - | List of fields to provide additional aggregate data |\n| searchString | String | - | Query string to search for records based on text input |\n\n## Pagination\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| pageLimit | Number | - | The maximum number of records in the result set |\n| pageNumber | Number | - | The desired page number of the results |\n\n## Sort\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| field | String | - | The desired field to sort the results by |\n| direction | \"ASC\", \"DESC\" | \"ASC\" | The direction to apply to the sorted field |\n\n## Condition\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| field | String | - | The desired field to apply a condition to |\n| filterOperator | Operator | - | The operator to use for the condition (See operators list) |\n| value | String / Number / Boolean | - | The expected value for the condition |\n\n## Filter\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| conditions | Array (Condition) | - | The conditions to apply within the filter |\n| expressionOperator | \"AND\", \"OR\" | \"AND\" | The expression used to combine the conditions |\n| filters | Array (Filter) | - | An array of child filters |\n\n## Join\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| fromAttribute | String | - | The key on the primary table used in the join (Commonly Id) |\n| toAttribute | String | - | The foreign key on the joining table |\n| apiName | String | - | The fully qualified API name of the table to join |\n| conditions | Array (Condition) | - | An array of conditions to apply to the join |\n| filters | Array (Filter) | - | An array of filters to apply to the join |\n| expressionOperator | \"AND\", \"OR\" | \"AND\" | The expression used to combine conditions and filters |\n\n## Lookup\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| field | String | - | The field on the object containing the Id of the reference record |\n| lookups | Array (Lookup) | - | Array of nested lookups to apply to the reference result |\n| children | Array (Children) | - | An array of child data to query on the reference record |\n\n## Children\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| field | String | - | The field on the object referencing the child records |\n| page | Pagination | - | Pagination Object representing the per page limit and desired page number |\n| filters | Array (Filter) | - | Array of filters to apply to the query |\n| sortOrder | Array (Sort) | - | Array of sort objects to sort the result set |\n| lookups | Array (Lookup) | - | Array of lookup fields to populate on the result set |\n| children | Array (Children) | - | Array of child records to populate on the result set |\n\n## Aggregate Field\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| field | String | - | The field to apply an aggregation to |\n| aggregateType | Aggregate Function | - | The aggregate function to use (See aggregate function list) |\n\n#### Operators\n     - Equal        - LessEqual        - Contains        - EndsWith\n     - NotEqual        - GreaterEqual      - DoesNotContain    - DoesNotEndWith\n     - GreaterThan      - Like          - BeginsWith      - In\n     - LessThan        - NotLike        - DoesNotBeginWith    - NotIn\n     - Null          - On          - LastXDays        - NextXDays\n     - NotNull        - Today\n\n#### Aggregate Functions\n     - SUM\n     - MIN\n     - MAX\n     - AVG\n     - COUNT",
+                "description": "The query endpoint can be used to obtained complex result sets for the client application. When using the query endpoint, it is important to keep in mind the limitations of the underlying SOQL and SOSL platforms that power this API. In addition, performance can vary based on the complexity of the query request.Request body should be an object containing the key and value with the following fields as shown in example below",
                 "operationId": "Query",
                 "parameters": [
                     {
@@ -27347,7 +27357,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "Apttus_Config2__Order__C"
                         }
                     },
                     {
@@ -27371,10 +27381,87 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
+                "requestBody": {
+                    "description": "## Body Parameters\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| page | Pagination | - | Pagination Object representing the per page limit and desired page number |\n| sortOrder | Array (Sort) | - | Array of sort objects to sort the result set |\n| cacheStrategy |\"performance\", \"freshness\"| freshness | Desired cache strategy |\n| conditions | Array (Condition) | - | Array of conditions to apply to the query |\n| expressionOperator | \"OR\", \"AND\" | \"AND\" | The expression used to combine conditions and filters |\n| filters | Array (Filter) | - | Array of filters to apply to the query |\n| joins | Array (Join) | - | Array of join objects to apply to the query |\n| lookups | Array (Lookup) | - | Array of lookup fields to populate on the result set |\n| children | Array (Children) | - | Array of child records to populate on the result set |\n| groupBy | List (String) | - | Array of fields to group the result set by\n| aggregate | true / false | false | When set to true, result will return only aggregate data |\n| aggregateFields | Array (AggregateField) | - | List of fields to provide additional aggregate data |\n| searchString | String | - | Query string to search for records based on text input |\n\n## Pagination\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| pageLimit | Number | - | The maximum number of records in the result set |\n| pageNumber | Number | - | The desired page number of the results |\n\n## Sort\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| field | String | - | The desired field to sort the results by |\n| direction | \"ASC\", \"DESC\" | \"ASC\" | The direction to apply to the sorted field |\n\n## Condition\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| field | String | - | The desired field to apply a condition to |\n| filterOperator | Operator | - | The operator to use for the condition (See operators list) |\n| value | String / Number / Boolean | - | The expected value for the condition |\n\n## Filter\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| conditions | Array (Condition) | - | The conditions to apply within the filter |\n| expressionOperator | \"AND\", \"OR\" | \"AND\" | The expression used to combine the conditions |\n| filters | Array (Filter) | - | An array of child filters |\n\n## Join\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| fromAttribute | String | - | The key on the primary table used in the join (Commonly Id) |\n| toAttribute | String | - | The foreign key on the joining table |\n| apiName | String | - | The fully qualified API name of the table to join |\n| conditions | Array (Condition) | - | An array of conditions to apply to the join |\n| filters | Array (Filter) | - | An array of filters to apply to the join |\n| expressionOperator | \"AND\", \"OR\" | \"AND\" | The expression used to combine conditions and filters |\n\n## Lookup\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| field | String | - | The field on the object containing the Id of the reference record |\n| lookups | Array (Lookup) | - | Array of nested lookups to apply to the reference result |\n| children | Array (Children) | - | An array of child data to query on the reference record |\n\n## Children\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| field | String | - | The field on the object referencing the child records |\n| page | Pagination | - | Pagination Object representing the per page limit and desired page number |\n| filters | Array (Filter) | - | Array of filters to apply to the query |\n| sortOrder | Array (Sort) | - | Array of sort objects to sort the result set |\n| lookups | Array (Lookup) | - | Array of lookup fields to populate on the result set |\n| children | Array (Children) | - | Array of child records to populate on the result set |\n\n## Aggregate Field\n|**Key**|**Type**|**Default**|**Description**|\n|--|--|--|--|\n| field | String | - | The field to apply an aggregation to |\n| aggregateType | Aggregate Function | - | The aggregate function to use (See aggregate function list) |\n\n#### Operators\n     - Equal        - LessEqual        - Contains        - EndsWith\n     - NotEqual        - GreaterEqual      - DoesNotContain    - DoesNotEndWith\n     - GreaterThan      - Like          - BeginsWith      - In\n     - LessThan        - NotLike        - DoesNotBeginWith    - NotIn\n     - Null          - On          - LastXDays        - NextXDays\n     - NotNull        - Today\n\n#### Aggregate Functions\n     - SUM\n     - MIN\n     - MAX\n     - AVG\n     - COUNT",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                },
+                                "properties": {
+                                    "EffectiveDateId": {
+                                        "type": "string"
+                                    },
+                                    "Id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "expressionOperator": "AND",
+                                    "view": "detail",
+                                    "parentKeys": [],
+                                    "expand": true,
+                                    "waitForExpansion": true,
+                                    "cacheStrategy": "freshness",
+                                    "conditions": [
+                                        {
+                                            "field": "Active",
+                                            "filterOperator": "Equal",
+                                            "val": true,
+                                            "value": true,
+                                            "apiName": "Apttus_Config2__ProductAttributeRule__c"
+                                        }
+                                    ],
+                                    "filters": [
+                                        {
+                                            "conditions": [
+                                                {
+                                                    "field": "ProductScope",
+                                                    "filterOperator": "Equal",
+                                                    "val": "All",
+                                                    "value": "All",
+                                                    "apiName": "Apttus_Config2__ProductAttributeRule__c"
+                                                },
+                                                {
+                                                    "field": "ProductScope",
+                                                    "filterOperator": "In",
+                                                    "val": [
+                                                        "01t4R00000J5R6aQAF"
+                                                    ],
+                                                    "value": "01t4R00000J5R6aQAF",
+                                                    "apiName": "Apttus_Config2__ProductAttributeRule__c"
+                                                }
+                                            ],
+                                            "filters": null,
+                                            "expressionOperator": "OR",
+                                            "apiName": "Apttus_Config2__ProductAttributeRule__c"
+                                        }
+                                    ],
+                                    "page": {
+                                        "pageLimit": 50,
+                                        "pageNumber": 1
+                                    },
+                                    "joins": [],
+                                    "children": [
+                                        {
+                                            "field": "Apttus_Config2__ProductAttributeRuleActions__r",
+                                            "filters": [],
+                                            "children": null,
+                                            "lookups": null
+                                        }
+                                    ],
+                                    "aggregateFields": []
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -27469,7 +27556,8 @@
                         "style": "form",
                         "explode": true,
                         "schema": {
-                            "type": "boolean"
+                            "type": "boolean",
+                            "example": "false"
                         }
                     },
                     {
@@ -27480,7 +27568,8 @@
                         "style": "form",
                         "explode": true,
                         "schema": {
-                            "type": "number"
+                            "type": "number",
+                            "example": "10"
                         }
                     },
                     {
@@ -27491,7 +27580,8 @@
                         "style": "form",
                         "explode": true,
                         "schema": {
-                            "type": "number"
+                            "type": "number",
+                            "example": "1"
                         }
                     },
                     {
@@ -27502,7 +27592,8 @@
                         "style": "form",
                         "explode": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "<string>"
                         }
                     },
                     {
@@ -27513,7 +27604,8 @@
                         "style": "form",
                         "explode": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "ASC"
                         }
                     },
                     {
@@ -27524,7 +27616,8 @@
                         "style": "form",
                         "explode": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "condition[0]=Id,Equal,a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -27535,7 +27628,8 @@
                         "style": "form",
                         "explode": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "lookups=Account"
                         }
                     },
                     {
@@ -27546,7 +27640,8 @@
                         "style": "form",
                         "explode": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "children=StoreBanners"
                         }
                     },
                     {
@@ -27557,7 +27652,8 @@
                         "style": "form",
                         "explode": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "CSV"
                         }
                     },
                     {
@@ -27568,7 +27664,8 @@
                         "style": "form",
                         "explode": true,
                         "schema": {
-                            "type": "boolean"
+                            "type": "boolean",
+                            "example": "true"
                         }
                     },
                     {
@@ -27579,7 +27676,8 @@
                         "style": "form",
                         "explode": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "Auto"
                         }
                     },
                     {
@@ -27590,7 +27688,8 @@
                         "style": "form",
                         "explode": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "Account"
                         }
                     },
                     {
@@ -27602,7 +27701,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "Apttus_Config2__Order__C"
                         }
                     },
                     {
@@ -27614,7 +27713,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -27942,7 +28041,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "Apttus_Config2__Order__C"
                         }
                     },
                     {
@@ -27954,19 +28053,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
-                        }
-                    },
-                    {
-                        "name": "Content-Type",
-                        "in": "header",
-                        "description": "Content type of the request body.",
-                        "required": true,
-                        "style": "simple",
-                        "explode": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "application/json"
+                            "example": "Ecommerce"
                         }
                     }
                 ],
@@ -28052,7 +28139,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "products"
                         }
                     },
                     {
@@ -28064,11 +28151,11 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "01t4R00000J5R7bQAF"
                         }
                     },
                     {
-                        "name": "x-stroefront",
+                        "name": "x-storefront",
                         "in": "header",
                         "description": "The name of the storefront being used for the request.",
                         "required": true,
@@ -28076,7 +28163,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "Ecommerce"
                         }
                     }
                 ],
@@ -29860,9 +29947,9 @@
                 "tags": [
                     "Generic"
                 ],
-                "summary": "UpsertaRecord(s)",
+                "summary": "UpsertRecord(s)",
                 "description": "Records can be updated by passing in the record type and id as parameters and the fields to be updated in the body of the request.",
-                "operationId": "UpsertaRecord(s)",
+                "operationId": "UpsertRecord(s)",
                 "parameters": [
                     {
                         "name": "object",
@@ -29873,7 +29960,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "carts"
                         }
                     },
                     {
@@ -29885,7 +29972,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1R4R00000JJvEPUA1"
                         }
                     },
                     {
@@ -29914,36 +30001,36 @@
                     }
                 ],
                 "requestBody": {
-                    "description":"Any editable field for the specified record can be passed into the body of the request. Request body can be a single record or an array of records to be updated.",
+                    "description": "Any editable field for the specified record can be passed into the body of the request. Request body can be a single record or an array of records to be updated.",
                     "content": {
-                      "application/json": {
-                        "schema": {
-                          "type": "array",
-                          "items": {
-                            "type": "object"
-                          },
-                          "properties": {
-                            "EffectiveDateId": {
-                              "type": "string"
-                            },
-                            "Id": {
-                              "type": "string"
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                },
+                                "properties": {
+                                    "EffectiveDateId": {
+                                        "type": "string"
+                                    },
+                                    "Id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "EffectiveDate": "2020-01-02T04:54:32.577Z",
+                                        "Id": "a1I3I0000004CoPUAU"
+                                    },
+                                    {
+                                        "EffectiveDate": "2020-01-02T04:54:32.577Z",
+                                        "Id": "a1I3I0000004CoQUAU"
+                                    }
+                                ]
                             }
-                          },
-                          "example": [
-                            {
-                                "EffectiveDate" : "2020-01-02T04:54:32.577Z",
-                                "Id" : "a1I3I0000004CoPUAU"
-                            },
-                            {
-                                "EffectiveDate" : "2020-01-02T04:54:32.577Z",
-                                "Id" : "a1I3I0000004CoQUAU"
-                            }
-                          ]
                         }
-                      }
                     }
-                  },
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -29993,7 +30080,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "carts"
                         }
                     },
                     {
@@ -30005,7 +30092,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1R4R00000JJvEPUA1"
                         }
                     },
                     {
@@ -30017,7 +30104,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -30065,7 +30152,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "carts"
                         }
                     },
                     {
@@ -30077,35 +30164,47 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "Ecommerce"
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "Content type of the request body.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "application/json"
                         }
                     }
                 ],
                 "requestBody": {
                     "content": {
-                      "application/json": {
-                        "schema": {
-                          "type": "array",
-                          "items": {
-                            "type": "object"
-                          },
-                          "properties": {
-                            "Id": {
-                              "type": "string"
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                },
+                                "properties": {
+                                    "Id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "Id": "a1I3I0000004CoPUAU"
+                                    },
+                                    {
+                                        "Id": "a1I3I0000004CoQUAU"
+                                    }
+                                ]
                             }
-                          },
-                          "example": [
-                            {
-                                "Id" : "a1I3I0000004CoPUAU"
-                            },
-                            {
-                                "Id" : "a1I3I0000004CoQUAU"
-                            }
-                          ]
                         }
-                      }
                     }
-                  },
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -30155,7 +30254,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "Ecommerce"
                         }
                     }
                 ],
@@ -30443,7 +30542,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -30455,7 +30554,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     },
                     {
@@ -30467,41 +30566,41 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "application/json"
                         }
                     }
                 ],
                 "requestBody": {
                     "content": {
-                      "application/json": {
-                        "schema": {
-                          "type": "object",
-                          "properties": {
-                            "Order": {
-                              "type": "object"
-                            },
-                            "Contact": {
-                                "type": "object"
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "Order": {
+                                        "type": "object"
+                                    },
+                                    "Contact": {
+                                        "type": "object"
+                                    }
+                                },
+                                "example": {
+                                    "Order": {
+                                        "Description": "From API",
+                                        "BillToAccountId": "0014R00002XlsOb",
+                                        "ShipToAccountId": "0014R00002XlsOb"
+                                    },
+                                    "Contact": {
+                                        "FirstName": "Sample",
+                                        "LastName": "Name",
+                                        "Contact_Full_Name": "Hello",
+                                        "MailingStreet": "124 My Street",
+                                        "Email": "samplename@gmail.com"
+                                    }
+                                }
                             }
-                          },
-                          "example": {
-                            "Order" : {
-                                "Description" : "From API",
-                                "BillToAccountId": "0014R00002XlsOb",
-                                "ShipToAccountId": "0014R00002XlsOb"
-                            },
-                            "Contact" : {
-                                "FirstName" : "Sample",
-                                "LastName" : "Name",
-                                "Contact_Full_Name" : "Hello",
-                                "MailingStreet" : "124 My Street",
-                                "Email" : "samplename@gmail.com"	
-                            }
-                          }
                         }
-                      }
                     }
-                  },
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -31330,7 +31429,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
                     },
                     {
@@ -31342,7 +31441,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     },
                     {
@@ -31358,6 +31457,27 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "Name": {
+                                        "type": "string"
+                                    },
+                                    "Description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "Name": "Test Proposal",
+                                    "Description": "Test Attachment"
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -31500,7 +31620,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -31554,7 +31674,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -31584,7 +31704,7 @@
                     "Authentication"
                 ],
                 "summary": "GetAccessToken",
-                "description": "The /users/token endpoint should be used to obtain an access token for the current user. The body should contain the base64 data of the encrypted client credentials using the key obtained from the /users/key endpoint.\n\n### Request Body (Before Encryption)\n|**Key**|**Type**|**Description**|\n|--|--|--|\n| username | String | The username of the end user (Usually in email format) |\n| password | String | The password of the end user\n\n### Building the Token Request\n#### 1. Get a temporary key\nIn order to obtain a temporary encryption key, a callout must be made to the /users/key endpoint that will return a 64-bit hexadecimal key similar to the following:\n\n    9d035a21deee3664ca5f7b8810c4251237774a6f01140d98fdadb6d214bcd3b7\n\n#### 2. Encrypt the request body using the temporary key\nOnce a key has been obtained, you can use the encryption library of your choosing to encrypt the request body with the **AES-CBC** algorithm. \n\n - Before base64 encoding the encrypted data, make sure the initialization vector used is prepended\n\nThe result of the encryption should look similar in structure to:\n\n    047v2MG4m5cxkqwIXN1po0Q8p5PTpRlm9hlTlC89jPOpjkGlL3wZ732XDPveJLUWYkrJRnzt5M2bh+IZhIn4r+BmI21xPNQCESWZMSwOPn0=\n\nThis base64 string will be used as the body of the request sent to the /users/token endpoint. Below are a couple of example using popular JavaScript frameworks:\n\n\n##### ES6 JavaScript example using native Crypto library\n\n    // First obtain a key by making an API call to /users/key\n    const key = \"9d035a21deee3664ca5f7b8810c4251237774a6f01140d98fdadb6d214bcd3b7\";\n    \n    // Initialization Vector for CBC algorithm\n    const iv = window.crypto.getRandomValues(new Uint8Array(16));\n    \n    // Raw customer credential data\n    const clientCredentials = {\n      \"username\" : \"customer@myshop.community.com\",\n      \"password\" : \"strongpassword\"\n    }\n    \n    // Supporting function to convert the hex key into an ArrayBuffer object\n    const hexToArrayBuffer = (hex) => {\n        var typedArray = new Uint8Array(hex.match(/[\\da-f]{2}/gi).map(function (h) {\n          return parseInt(h, 16)\n        }));\n        return typedArray.buffer;\n    }\n    \n    // Supporting function converts a string into an ArrayBuffer\n    const getUtf8Bytes = (str) =>\n      new Uint8Array(\n        [...unescape(encodeURIComponent(str))].map(c => c.charCodeAt(0))\n      );\n    \n    crypto.subtle.importKey(\n        \"raw\",\n        hexToArrayBuffer(key),\n        {   //this is the algorithm options\n            name: \"AES-CBC\"\n        },\n        false, //whether the key is extractable (i.e. can be used in exportKey)\n        [\"encrypt\", \"decrypt\"] // key can be used for encryption and decryption\n    )\n    .then((key) => {\n        return crypto.subtle.encrypt(\n            {\n                name: \"AES-CBC\",\n                //Don't re-use initialization vectors!\n                //Always generate a new iv every time your encrypt!\n                iv: iv,\n                length: 256\n            },\n            key, // CryptoKey object generated from hex key\n            getUtf8Bytes(JSON.stringify(clientCredentials)) // ArrayBuffer of client credentials\n        )\n    })\n    .then((encrypted) => {\n        // The result from the promise will contain encrypted customer credentials.\n        // In order to decrypt the request, the IV used must be prepended to the body\n        const requestData = btoa(String.fromCharCode(...iv) + String.fromCharCode(...new Uint8Array(encrypted)));\n        console.log(requestData);\n        // The request data can then be sent to the token endpoint in order to obtain an access token\n    });\n\n##### Example using CryptoJS\n    // First obtain a key by making an API call to /users/key\n    const key = CryptoJS.enc.Hex.parse(\"9d035a21deee3664ca5f7b8810c4251237774a6f01140d98fdadb6d214bcd3b7\");\n    \n    // Initialization Vector for CBC algorithm\n    const iv = CryptoJS.lib.WordArray.random(128/8);\n    \n    // Raw customer credential data\n    const clientCredentials = {\n      \"username\" : \"customer@myshop.community.com\",\n      \"password\" : \"strongpassword\"\n    }  \n    const encrypted = CryptoJS.AES.encrypt(JSON.stringify(clientCredentials), key, {\n      iv: iv,\n      padding: CryptoJS.pad.Pkcs7,\n      mode: CryptoJS.mode.CBC\n    });\n    \n    // The unencoded data sent to the server must contain the Initialization Vector prepended to the encrypted credentials\n    const result = btoa(atob(iv.toString(CryptoJS.enc.Base64)) + atob(encrypted.ciphertext.toString(CryptoJS.enc.Base64)));",
+                "description": "The /users/token endpoint should be used to obtain an access token for the current user. The body should contain the base64 data of the encrypted client credentials using the key obtained from the /users/key endpoint.",
                 "operationId": "GetAccessToken",
                 "parameters": [
                     {
@@ -31596,7 +31716,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     },
                     {
@@ -31608,10 +31728,32 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "application/json"
                         }
                     }
                 ],
+                "requestBody": {
+                    "description": "### Building the Token Request\n#### 1. Get a temporary key\nIn order to obtain a temporary encryption key, a callout must be made to the /users/key endpoint that will return a 64-bit hexadecimal key similar to the following:\n\n    9d035a21deee3664ca5f7b8810c4251237774a6f01140d98fdadb6d214bcd3b7\n\n#### 2. Encrypt the request body using the temporary key\nOnce a key has been obtained, you can use the encryption library of your choosing to encrypt the request body with the **AES-CBC** algorithm. \n\n - Before base64 encoding the encrypted data, make sure the initialization vector used is prepended\n\nThe result of the encryption should look similar in structure to:\n\n    047v2MG4m5cxkqwIXN1po0Q8p5PTpRlm9hlTlC89jPOpjkGlL3wZ732XDPveJLUWYkrJRnzt5M2bh+IZhIn4r+BmI21xPNQCESWZMSwOPn0=\n\nThis base64 string will be used as the body of the request sent to the /users/token endpoint. Below are a couple of example using popular JavaScript frameworks:\n\n\n##### ES6 JavaScript example using native Crypto library\n\n    // First obtain a key by making an API call to /users/key\n    const key = \"9d035a21deee3664ca5f7b8810c4251237774a6f01140d98fdadb6d214bcd3b7\";\n    \n    // Initialization Vector for CBC algorithm\n    const iv = window.crypto.getRandomValues(new Uint8Array(16));\n    \n    // Raw customer credential data\n    const clientCredentials = {\n      \"username\" : \"customer@myshop.community.com\",\n      \"password\" : \"strongpassword\"\n    }\n    \n    // Supporting function to convert the hex key into an ArrayBuffer object\n    const hexToArrayBuffer = (hex) => {\n        var typedArray = new Uint8Array(hex.match(/[\\da-f]{2}/gi).map(function (h) {\n          return parseInt(h, 16)\n        }));\n        return typedArray.buffer;\n    }\n    \n    // Supporting function converts a string into an ArrayBuffer\n    const getUtf8Bytes = (str) =>\n      new Uint8Array(\n        [...unescape(encodeURIComponent(str))].map(c => c.charCodeAt(0))\n      );\n    \n    crypto.subtle.importKey(\n        \"raw\",\n        hexToArrayBuffer(key),\n        {   //this is the algorithm options\n            name: \"AES-CBC\"\n        },\n        false, //whether the key is extractable (i.e. can be used in exportKey)\n        [\"encrypt\", \"decrypt\"] // key can be used for encryption and decryption\n    )\n    .then((key) => {\n        return crypto.subtle.encrypt(\n            {\n                name: \"AES-CBC\",\n                //Don't re-use initialization vectors!\n                //Always generate a new iv every time your encrypt!\n                iv: iv,\n                length: 256\n            },\n            key, // CryptoKey object generated from hex key\n            getUtf8Bytes(JSON.stringify(clientCredentials)) // ArrayBuffer of client credentials\n        )\n    })\n    .then((encrypted) => {\n        // The result from the promise will contain encrypted customer credentials.\n        // In order to decrypt the request, the IV used must be prepended to the body\n        const requestData = btoa(String.fromCharCode(...iv) + String.fromCharCode(...new Uint8Array(encrypted)));\n        console.log(requestData);\n        // The request data can then be sent to the token endpoint in order to obtain an access token\n    });\n\n##### Example using CryptoJS\n    // First obtain a key by making an API call to /users/key\n    const key = CryptoJS.enc.Hex.parse(\"9d035a21deee3664ca5f7b8810c4251237774a6f01140d98fdadb6d214bcd3b7\");\n    \n    // Initialization Vector for CBC algorithm\n    const iv = CryptoJS.lib.WordArray.random(128/8);\n    \n    // Raw customer credential data\n    const clientCredentials = {\n      \"username\" : \"customer@myshop.community.com\",\n      \"password\" : \"strongpassword\"\n    }  \n    const encrypted = CryptoJS.AES.encrypt(JSON.stringify(clientCredentials), key, {\n      iv: iv,\n      padding: CryptoJS.pad.Pkcs7,\n      mode: CryptoJS.mode.CBC\n    });\n    \n    // The unencoded data sent to the server must contain the Initialization Vector prepended to the encrypted credentials\n    const result = btoa(atob(iv.toString(CryptoJS.enc.Base64)) + atob(encrypted.ciphertext.toString(CryptoJS.enc.Base64)));",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "username": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "username": "sample@example.com",
+                                    "password": "pswd"
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -31653,7 +31795,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
                         }
                     },
                     {
@@ -31665,7 +31807,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "application/json"
                         }
                     }
                 ],
@@ -31844,7 +31986,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a2n3I0000009KBlQAM"
                         }
                     },
                     {
@@ -31856,19 +31998,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
-                        }
-                    },
-                    {
-                        "name": "Content-Type",
-                        "in": "header",
-                        "description": "Content type of the request body.",
-                        "required": true,
-                        "style": "simple",
-                        "explode": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "application/json"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -31909,7 +32039,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a0Y3I000001DF21UAG"
                         }
                     },
                     {
@@ -31921,19 +32051,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
-                        }
-                    },
-                    {
-                        "name": "Content-Type",
-                        "in": "header",
-                        "description": "Content type of the request body.",
-                        "required": true,
-                        "style": "simple",
-                        "explode": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "application/json"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -31975,9 +32093,9 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
-                    },                    
+                    },
                     {
                         "name": "x-storefront",
                         "in": "header",
@@ -31987,19 +32105,7 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
-                        }
-                    },
-                    {
-                        "name": "Content-Type",
-                        "in": "header",
-                        "description": "Content type of the request body.",
-                        "required": true,
-                        "style": "simple",
-                        "explode": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "application/json"
+                            "example": "ECommerce"
                         }
                     }
                 ],
@@ -32011,7 +32117,7 @@
                                 "schema": {
                                     "$ref": "#/components/schemas/GetChildren"
                                 },
-                                "example":{
+                                "example": {
                                     "title": "success",
                                     "status": 200,
                                     "data": {
@@ -32042,9 +32148,9 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "a1I3I000000e7GLUAY"
                         }
-                    },                    
+                    },
                     {
                         "name": "x-storefront",
                         "in": "header",
@@ -32054,7 +32160,58 @@
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "<string>"
+                            "example": "ECommerce"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessData"
+                                },
+                                "example": {
+                                    "title": "success",
+                                    "status": 200,
+                                    "data": true
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/services/apexrest/Apttus_WebStore/apttus/v1/assets/swap": {
+            "post": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Swap",
+                "operationId": "Swap",
+                "parameters": [
+                    {
+                        "name": "x-storefront",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string",
+                            "example": "{{StoreFront}}"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string",
+                            "example": "OAuth {{token}}"
                         }
                     },
                     {
@@ -32070,24 +32227,118 @@
                         }
                     }
                 ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/SuccessData"
-                                },
-                                "example":{
-                                    "title": "success",
-                                    "status": 200,
-                                    "data": true
-                                }
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwapRequest"
+                            },
+                            "example": {
+                                "cartId": "a1IW0000001ZkCaMAK",
+                                "newStartDate": "2020-09-09",
+                                "assetIds": [
+                                    "a0eW0000003Nzup"
+                                ],
+                                "productIds": [
+                                    "01tW0000003v0zd"
+                                ]
                             }
                         }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
                     }
                 },
-                "deprecated": false
+                "deprecated": false,
+                "security": [],
+                "servers": [
+                    {
+                        "url": "http://example.com",
+                        "variables": {}
+                    }
+                ]
+            }
+        },
+        "/services/apexrest/Apttus_WebStore/apttus/v1/assets/121231/change": {
+            "post": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Terminate Asset",
+                "operationId": "TerminateAsset",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string",
+                            "example": "OAuth {{token}}"
+                        }
+                    },
+                    {
+                        "name": "x-storefront",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string",
+                            "example": "ECommerce"
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "Content type of the request body.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "application/json"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TerminateAssetRequest"
+                            },
+                            "example": {
+                                "cartId": "a1IW0000001ZeAVMA0",
+                                "cancelDate": "2020-01-15",
+                                "assetIds": [
+                                    "a1IW0000001ZeAVMA0"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [],
+                "servers": [
+                    {
+                        "url": "http://example.com",
+                        "variables": {}
+                    }
+                ]
             }
         }
     },
@@ -33048,7 +33299,7 @@
                     "title": "success",
                     "status": 200,
                     "data": {}
-                }  
+                }
             },
             "SuccessData": {
                 "title": "SuccessData",
@@ -33173,6 +33424,79 @@
                     "title": "success",
                     "status": 200,
                     "data": {}
+                }
+            },
+            "SwapRequest": {
+                "title": "SwapRequest",
+                "required": [
+                    "cartId",
+                    "newStartDate",
+                    "assetIds",
+                    "productIds"
+                ],
+                "type": "object",
+                "properties": {
+                    "cartId": {
+                        "type": "string"
+                    },
+                    "newStartDate": {
+                        "type": "string"
+                    },
+                    "assetIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    },
+                    "productIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                },
+                "example": {
+                    "cartId": "a1IW0000001ZkCaMAK",
+                    "newStartDate": "2020-09-09",
+                    "assetIds": [
+                        "a0eW0000003Nzup"
+                    ],
+                    "productIds": [
+                        "01tW0000003v0zd"
+                    ]
+                }
+            },
+            "TerminateAssetRequest": {
+                "title": "TerminateAssetRequest",
+                "required": [
+                    "cartId",
+                    "cancelDate",
+                    "assetIds"
+                ],
+                "type": "object",
+                "properties": {
+                    "cartId": {
+                        "type": "string"
+                    },
+                    "cancelDate": {
+                        "type": "string"
+                    },
+                    "assetIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                },
+                "example": {
+                    "cartId": "a1IW0000001ZeAVMA0",
+                    "cancelDate": "2020-01-15",
+                    "assetIds": [
+                        "a1IW0000001ZeAVMA0"
+                    ]
                 }
             }
         },
