@@ -30558,6 +30558,18 @@
                         }
                     },
                     {
+                        "name": "x-account",
+                        "in": "header",
+                        "description": "The account value from header will be taken as default account for order properties like ShipTo,SoldTo,BillTo only when the value  of these properties are null.",
+                        "required": false,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "Acme"
+                        }
+                    },
+                    {
                         "name": "Content-Type",
                         "in": "header",
                         "description": "Content type of the request body.",
@@ -31442,6 +31454,18 @@
                         "schema": {
                             "type": "string",
                             "example": "ECommerce"
+                        }
+                    },
+                    {
+                        "name": "x-account",
+                        "in": "header",
+                        "description": "The account value from header will be taken as default account for proposal account property, also for  properties like ShipTo,SoldTo only when the value of these properties are null.",
+                        "required": false,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "Acme"
                         }
                     },
                     {
