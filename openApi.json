@@ -32082,27 +32082,28 @@
                 ],
                 "summary": "Swap",
                 "operationId": "Swap",
+                "description": "Invoke this API for swapping Assets.",
                 "parameters": [
                     {
                         "name": "x-storefront",
                         "in": "header",
-                        "description": "",
+                        "description": "The name of the storefront being used for the request.",
                         "required": true,
                         "style": "simple",
                         "schema": {
                             "type": "string",
-                            "example": "{{StoreFront}}"
+                            "example": "ECommerce"
                         }
                     },
                     {
                         "name": "Authorization",
                         "in": "header",
-                        "description": "",
+                        "description": "authentication token",
                         "required": true,
                         "style": "simple",
                         "schema": {
                             "type": "string",
-                            "example": "OAuth {{token}}"
+                            "example": "00DG0000000iqtB!ARUAQHofFrVurFKWS8TcFKmhFM1yiA1VBzEVVAOXDB.5r_rlpxXuj53RnqfY2QKUgsL3N.ge5kmSPN5UcHK9iHckog6eTw.4"
                         }
                     },
                     {
@@ -32119,7 +32120,6 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -32129,10 +32129,16 @@
                                         "type": "string"
                                     },
                                     "ProductIds": {
-                                        "type": "array"
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
                                     },
                                     "AssetIds": {
-                                        "type": "array"
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
                                     },
                                     "CartIds": {
                                         "type": "string"
@@ -32155,7 +32161,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "",
+                        "description": "OK",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -32548,22 +32554,23 @@
                 ],
                 "summary": "Terminate Asset",
                 "operationId": "TerminateAsset",
+                "description": "Invoke this API for asset cancellation.",
                 "parameters": [
                     {
                         "name": "Authorization",
                         "in": "header",
-                        "description": "",
+                        "description": "authentication token",
                         "required": true,
                         "style": "simple",
                         "schema": {
                             "type": "string",
-                            "example": "OAuth {{token}}"
+                            "example": "00DG0000000iqtB!ARUAQHofFrVurFKWS8TcFKmhFM1yiA1VBzEVVAOXDB.5r_rlpxXuj53RnqfY2QKUgsL3N.ge5kmSPN5UcHK9iHckog6eTw.4"
                         }
                     },
                     {
                         "name": "x-storefront",
                         "in": "header",
-                        "description": "",
+                        "description": "The name of the storefront being used for the request.",
                         "required": true,
                         "style": "simple",
                         "schema": {
@@ -32585,7 +32592,6 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -32595,7 +32601,10 @@
                                         "type": "string"
                                     },
                                     "AssetIds": {
-                                        "type": "array"
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
                                     },
                                     "CartIds": {
                                         "type": "string"
@@ -32615,7 +32624,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "",
+                        "description": "OK",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -32946,6 +32955,221 @@
                                             "Id": "a13W0000004DpK3IAK",
                                             "Apttus_Config2__ContractNumbers__c": "2020-01-15"
                                         }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/services/apexrest/Apttus_WebStore/apttus/v1/assets/{assetId}/change": {
+            "post": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Change Asset",
+                "operationId": "ChangeAsset",
+                "description": "Invoke this API to change the parameters of an asset, associated configuration and related details.",
+                "parameters": [
+                    {
+                        "name": "assetId",
+                        "in": "path",
+                        "description": "The Id of the asset that needs to be changed",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string",
+                            "example": "a0e3I000000ERLmQAO"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "authentication token",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string",
+                            "example": "00DG0000000iqtB!ARUAQHofFrVurFKWS8TcFKmhFM1yiA1VBzEVVAOXDB.5r_rlpxXuj53RnqfY2QKUgsL3N.ge5kmSPN5UcHK9iHckog6eTw.4"
+                        }
+                    },
+                    {
+                        "name": "x-storefront",
+                        "in": "header",
+                        "description": "The name of the storefront being used for the request.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string",
+                            "example": "ECommerce"
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "Content type of the request body.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "application/json"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "ProductAttributeValues": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "Step": {
+                                        "type": "string"
+                                    },
+                                    "SelectedOptions": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "CartId": {
+                                        "type": "string"
+                                    },
+                                    "CancelledOptions": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "AmendedAssets": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "example": {
+                                "ProductAttributeValues": [
+                                    {
+                                        "AssetId": null,
+                                        "AttributeValueExt3SO": {
+                                            "attributes": {
+                                                "type": "Apttus_Config2__ProductAttributeValueExt3__c"
+                                            },
+                                            "TestPAVExt3Field__c": "fieldValue",
+                                            "TestPAVExt3Field2__c": "fieldValue2"
+                                        },
+                                        "AttributeValueExt2SO": {
+                                            "attributes": {
+                                                "type": "Apttus_Config2__ProductAttributeValueExt2__c"
+                                            },
+                                            "TestPAVExt2Field__c": "fieldValue",
+                                            "TestPAVExt2Field2__c": "fieldValue2"
+                                        },
+                                        "AttributeValueExtSO": {
+                                            "attributes": {
+                                                "type": "Apttus_Config2__ProductAttributeValueExt__c"
+                                            },
+                                            "TestPAVExtField__c": "fieldValue",
+                                            "TestPAVExtField2__c": "fieldValue2"
+                                        },
+                                        "AttributeValueSO": {
+                                            "attributes": {
+                                                "type": "Apttus_Config2__ProductAttributeValue__c"
+                                            },
+                                            "Apttus_Config2__Age__c": "10",
+                                            "Apttus_Config2__Vendor__c": "Vendor 1"
+                                        },
+                                        "NullFields": {
+                                            "Apttus_Config2__ProductAttributeValue__c": [
+                                                "Apttus_Config2__Color__c",
+                                                "Field1__c"
+                                            ],
+                                            "Apttus_Config2__ProductAttributeValueExt__c": [
+                                                "fieldExt1__c"
+                                            ],
+                                            "Apttus_Config2__ProductAttributeValueExt2__c": [
+                                                "fieldExt2__c"
+                                            ],
+                                            "Apttus_Config2__ProductAttributeValueExt3__c": [
+                                                "fieldExt3__c"
+                                            ]
+                                        }
+                                    }
+                                ],
+                                "Step": "CHANGE_ASSET",
+                                "SelectedOptions": [
+                                    {
+                                        "StartDate": "2020-10-16",
+                                        "SellingTerm": 12,
+                                        "Quantity": 3,
+                                        "EndDate": "2020-11-14",
+                                        "CustomFields": [
+                                            "LineItem_Custom_field1__c",
+                                            "LineItem_Custom_field2__c"
+                                        ],
+                                        "CustomData": {
+                                            "attributes": {
+                                                "type": "Apttus_Config2__LineItem__c"
+                                            },
+                                            "LineItem_Custom_field1__c": "value1",
+                                            "LineItem_Custom_field2__c": "value2"
+                                        },
+                                        "ComponentProductId": "01t1I000000imxpQAA",
+                                        "ComponentId": "a0z1I000005dSnrQAE",
+                                        "Comments": "description",
+                                        "AttributeValues": [
+                                            {
+                                                "attributes": {
+                                                    "type": "Apttus_Config2__ProductAttributeValue__c"
+                                                },
+                                                "IsBundle__c": true
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "CartId": "a0p1I000009KLLUQA4",
+                                "CancelledOptions": [
+                                    "a0p1I000009KLLUQA4"
+                                ],
+                                "AmendedAssets": [
+                                    {
+                                        "attributes": {
+                                            "type": "Apttus_Config2__LineItem__c"
+                                        },
+                                        "Apttus_Config2__Quantity__c": 3,
+                                        "LineItemCustomField__C": "value"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ChangeAsset"
+                                },
+                                "example": {
+                                    "title": "success",
+                                    "status": 200,
+                                    "data": {
+                                        "pageErrors": null,
+                                        "nextStep": "VALIDATE",
+                                        "hasError": false
                                     }
                                 }
                             }
@@ -34047,6 +34271,45 @@
                     "data": {
                         "type": "object",
                         "properties": {
+                            "Id": {
+                                "type": "object",
+                                "properties": {
+                                    "Apttus_Config2__ConfigurationId__c": {
+                                        "type": "string"
+                                    },
+                                    "Apttus_Config2__ProductId__c": {
+                                        "type": "string"
+                                    },
+                                    "Apttus_Config2__LineType__c": {
+                                        "type": "string"
+                                    },
+                                    "Apttus_Config2__PrimaryLineNumber__c": {
+                                        "type": "number"
+                                    },
+                                    "Apttus_Config2__ItemSequence__c": {
+                                        "type": "number"
+                                    },
+                                    "Apttus_Config2__AssetLineItemId__c": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "title": "success",
+                    "status": 200,
+                    "data": {}
+                }
+            },
+            "TerminateAsset": {
+                "title": "TerminateAsset",
+                "type": "object",
+                "properties": {
+                    "Id": {
+                        "type": "object",
+                        "properties": {
                             "Apttus_Config2__ConfigurationId__c": {
                                 "type": "string"
                             },
@@ -34071,27 +34334,21 @@
                     "data": {}
                 }
             },
-            "TerminateAsset": {
-                "title": "TerminateAsset",
+            "ChangeAsset": {
+                "title": "ChangeAsset",
                 "type": "object",
                 "properties": {
                     "data": {
                         "type": "object",
                         "properties": {
-                            "Apttus_Config2__ConfigurationId__c": {
+                            "pageErrors": {
                                 "type": "string"
                             },
-                            "Apttus_Config2__Quantity__c": {
+                            "nextStep": {
                                 "type": "number"
                             },
-                            "Apttus_Config2__PriceListId__c": {
-                                "type": "string"
-                            },
-                            "Apttus_Config2__LineType__c": {
-                                "type": "string"
-                            },
-                            "Apttus_Config2__LineStatus__c": {
-                                "type": "string"
+                            "hasError": {
+                                "type": "boolean"
                             }
                         }
                     }
