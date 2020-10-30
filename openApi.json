@@ -27623,13 +27623,13 @@
                     {
                         "name": "lookups",
                         "in": "query",
-                        "description": "CSV of lookup relationships to include in result",
+                        "description": "Accepts primitive value",
                         "required": false,
                         "style": "form",
                         "explode": true,
                         "schema": {
                             "type": "string",
-                            "example": "lookups=Account"
+                            "example": "lookups=AccountId"
                         }
                     },
                     {
