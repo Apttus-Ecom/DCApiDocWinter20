@@ -33044,6 +33044,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "Note: Step Property in request body Indicates which step to be run.Possible values CHANGE_ASSET,VALIDATE, RUN_CONSTRAINTS, REPRICE",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -33194,6 +33195,23 @@
                                         "pageErrors": null,
                                         "nextStep": "VALIDATE",
                                         "hasError": false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500":  {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "title": "Internal Error",
+                                    "status": 500,
+                                    "data": {
+                                        "lineNumber": 84,
+                                        "cause": null,
+                                        "stackTrace": "(Apttus_WebStore)\n\n\n\n",
+                                        "message": "{\"pageErrors\":{\"warningMessages\":[],\"successMessages\":[],\"pricingResponse\":null,\"infoMessages\":[],\"errorMessages\":[\"Invalid card Id 01tW0000003vsKjIAI\"]},\"nextStep\":\"CHANGE_ASSET\",\"hasError\":true}"
                                     }
                                 }
                             }
