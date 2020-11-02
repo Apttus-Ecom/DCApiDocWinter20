@@ -33044,7 +33044,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "Note: Step Property in request body Indicates which step to be run.Possible values CHANGE_ASSET,VALIDATE, RUN_CONSTRAINTS, REPRICE",
+                    "description": "Note: Step Property in request body indicates which step to be run. Possible values CHANGE_ASSET, VALIDATE, RUN_CONSTRAINTS, REPRICE",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -33201,7 +33201,7 @@
                         }
                     },
                     "500":  {
-                        "description": "Error",
+                        "description": "Error <br>  Note: For the pageErrors.pricingReponse is only applicable when the step value is REPRICE in the request body.",
                         "content": {
                             "application/json": {
                                 "example": {
